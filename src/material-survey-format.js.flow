@@ -1,0 +1,102 @@
+export type BaseQuestion = {|
+  name: string,
+  title: string,
+  isRequired?: boolean,
+  hasOther?: boolean,
+  description?: string,
+  visibleIf?: string,
+  defaultAnswer?: any
+|}
+
+export type QuestionChoice =
+  | {
+      value: string,
+      text: string
+    }
+  | string
+
+export type RadioGroupQuestion = {
+  ...BaseQuestion,
+  type: "radiogroup",
+  choices: Array<QuestionChoice>
+}
+
+export type CheckboxQuestion = {
+  ...BaseQuestion,
+  type: "checkbox",
+  choices: Array<QuestionChoice>
+}
+
+export type DropdownQuestion = {
+  ...BaseQuestion,
+  type: "dropdown",
+  colCount?: number,
+  choices: Array<QuestionChoice>
+}
+
+export type ImagePickerQuestion = {
+  ...BaseQuestion,
+  type: "imagepicker",
+  choices: Array<QuestionChoice>
+}
+
+export type ChoiceRankerQuestion = {
+  ...BaseQuestion,
+  type: "choiceranker",
+  choices: Array<QuestionChoice>
+}
+
+export type BooleanQuestion = {
+  ...BaseQuestion,
+  type: "boolean"
+}
+
+export type MatrixQuestion = {
+  ...BaseQuestion,
+  type: "matrix",
+  columns: Array<QuestionChoice>,
+  rows: Array<QuestionChoice>
+}
+
+export type MatrixDropdownQuestion = {
+  ...BaseQuestion,
+  choices: Array<QuestionChoice>,
+  columns: Array<Question>,
+  rows: Array<QuestionChoice>
+}
+
+export type RatingQuestion = {
+  ...BaseQuestion,
+  type: "rating",
+  minRateDescription: string,
+  maxRateDescription: string
+}
+
+export type CommentQuestion = {
+  ...BaseQuestion,
+  type: "comment"
+}
+
+export type Question =
+  | RadioGroupQuestion
+  | CheckboxQuestion
+  | DropdownQuestion
+  | ImagePickerQuestion
+  | ChoiceRankerQuestion
+  | BooleanQuestion
+  | MatrixQuestion
+  | MatrixDropdownQuestion
+  | RatingQuestion
+  | CommentQuestion
+
+export type Page = {
+  elements: Array<Question>
+}
+
+export type SurveyMaterialFormat =
+  | { questions: Array<Question> }
+  | {
+      pages: Array<Page>
+    }
+
+export default SurveyMaterialFormat

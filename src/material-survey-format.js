@@ -1,0 +1,16 @@
+import t from "flow-runtime";
+export const BaseQuestion = t.type("BaseQuestion", t.exactObject(t.property("name", t.string()), t.property("title", t.string()), t.property("isRequired", t.boolean(), true), t.property("hasOther", t.boolean(), true), t.property("description", t.string(), true), t.property("visibleIf", t.string(), true), t.property("defaultAnswer", t.any(), true)));
+export const QuestionChoice = t.type("QuestionChoice", t.union(t.object(t.property("value", t.string()), t.property("text", t.string())), t.string()));
+export const RadioGroupQuestion = t.type("RadioGroupQuestion", t.object(...BaseQuestion.properties, t.property("type", t.string("radiogroup")), t.property("choices", t.array(QuestionChoice))));
+export const CheckboxQuestion = t.type("CheckboxQuestion", t.object(...BaseQuestion.properties, t.property("type", t.string("checkbox")), t.property("choices", t.array(QuestionChoice))));
+export const DropdownQuestion = t.type("DropdownQuestion", t.object(...BaseQuestion.properties, t.property("type", t.string("dropdown")), t.property("colCount", t.number(), true), t.property("choices", t.array(QuestionChoice))));
+export const ChoiceRankerQuestion = t.type("ChoiceRankerQuestion", t.object(...BaseQuestion.properties, t.property("type", t.string("imagepicker")), t.property("choices", t.array(QuestionChoice))));
+export const BooleanQuestion = t.type("BooleanQuestion", t.object(...BaseQuestion.properties, t.property("type", t.string("boolean"))));
+export const MatrixQuestion = t.type("MatrixQuestion", t.object(...BaseQuestion.properties, t.property("type", t.string("matrix")), t.property("columns", t.array(QuestionChoice)), t.property("rows", t.array(QuestionChoice))));
+export const MatrixDropdownQuestion = t.type("MatrixDropdownQuestion", t.object(...BaseQuestion.properties, t.property("choices", t.array(QuestionChoice)), t.property("columns", t.array(t.tdz(() => Question, "Question"))), t.property("rows", t.array(QuestionChoice))));
+export const RatingQuestion = t.type("RatingQuestion", t.object(...BaseQuestion.properties, t.property("type", t.string("rating")), t.property("minRateDescription", t.string()), t.property("maxRateDescription", t.string())));
+export const CommentQuestion = t.type("CommentQuestion", t.object(...BaseQuestion.properties, t.property("type", t.string("comment"))));
+export const Question = t.type("Question", t.union(RadioGroupQuestion, CheckboxQuestion, DropdownQuestion));
+export const Page = t.type("Page", t.object(t.property("elements", t.array(Question))));
+export const SurveyMaterialFormat = t.type("SurveyMaterialFormat", t.union(t.object(t.property("questions", t.array(Question))), t.object(t.property("pages", t.array(Page)))));
+export default SurveyMaterialFormat;

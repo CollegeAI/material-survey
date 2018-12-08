@@ -1,0 +1,34 @@
+{
+  "name": "material-survey",
+  "version": "1.0.0",
+  "description": "Material UI Survey Framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "start-storybook -p 6006",
+    "build": "npm run build:formatter",
+    "build:format": "babel --plugins=babel-plugin-flow-runtime --presets=@babel/preset-flow ./src/material-survey-format.js.flow --out-file=./src/material-survey-format.js",
+    "build-storybook": "build-storybook"
+  },
+  "author": "Severin Ibarluzea, CollegeAI Inc.",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.2.0",
+    "@babel/core": "^7.2.0",
+    "@babel/preset-flow": "^7.0.0",
+    "@material-ui/core": "^3.6.1",
+    "@material-ui/icons": "^3.0.1",
+    "@seveibar/k-choice-sort": "^1.0.8",
+    "@storybook/addon-actions": "^4.1.0-alpha.11",
+    "@storybook/addon-links": "^4.1.0-alpha.11",
+    "@storybook/addons": "^4.1.0-alpha.11",
+    "@storybook/react": "next",
+    "babel-loader": "^8.0.4",
+    "babel-plugin-flow-runtime": "^0.17.0",
+    "flow-runtime": "^0.17.0",
+    "prettier": "^1.15.3",
+    "react": "alpha",
+    "react-hot-loader": "next"
+  },
+  "dependencies": {}
+}
