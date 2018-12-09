@@ -24,7 +24,11 @@ export default ({
 }) => {
   return (
     <Card style={{ position: "relative" }}>
-      <CardHeader title={question.title} subheader={question.description} />
+      <CardHeader
+        style={{ paddingRight: 40 }}
+        title={question.title}
+        subheader={question.description}
+      />
       <CardContent>{children}</CardContent>
       <div style={{ position: "absolute", right: 16, top: 16 }}>
         <CheckIconAnimator

@@ -15,6 +15,11 @@ export type QuestionChoice =
     }
   | string
 
+export type TextQuestion = {
+  ...BaseQuestion,
+  type: "text"
+}
+
 export type RadioGroupQuestion = {
   ...BaseQuestion,
   type: "radiogroup",

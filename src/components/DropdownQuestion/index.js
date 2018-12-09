@@ -12,8 +12,8 @@ import ListItemText from "@material-ui/core/ListItemText"
 import Chip from "@material-ui/core/Chip"
 
 const SelectedValueContainer = styled.div`
-  padding: 10px;
-  padding-left: 16px;
+  padding: 4px;
+  padding-left: 8px;
 `
 
 export default ({
