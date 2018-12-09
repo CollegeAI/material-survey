@@ -14,20 +14,31 @@ const AnimatedIcon = styled.div`
   transition: 300ms transform, 300ms opacity;
 `
 
+const FadedTitle = styled.span`
+  opacity: 0.6;
+`
+
 export default ({
   question,
   answered,
-  children
+  children,
+  fadedTitle
 }: {
   question: BaseQuestion,
   answered: boolean,
-  children: any
+  children: any,
+  fadedTitle?: string
 }) => {
   return (
     <Card style={{ position: "relative" }}>
       <CardHeader
         style={{ paddingRight: 40 }}
-        title={question.title}
+        title={
+          <span>
+            {question.title}
+            {fadedTitle && <FadedTitle> {fadedTitle}</FadedTitle>}
+          </span>
+        }
         subheader={question.description}
       />
       <CardContent>{children}</CardContent>

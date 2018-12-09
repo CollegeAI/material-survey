@@ -58,7 +58,9 @@ export type ImagePickerQuestion = {
 export type ChoiceRankerQuestion = {
   ...BaseQuestion,
   type: "choiceranker",
-  choices: Array<QuestionChoice>
+  choices: Array<QuestionChoice>,
+  choicesAtOnce: number,
+  trials: number
 }
 
 export type BooleanQuestion = {
@@ -83,7 +85,10 @@ export type MatrixDropdownQuestion = {
 export type RatingQuestion = {
   ...BaseQuestion,
   type: "rating",
+  rankings?: number,
+  choices: Array<QuestionChoice>,
   minRateDescription: string,
+  midRateDescription?: string,
   maxRateDescription: string
 }
 
