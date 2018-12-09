@@ -17,7 +17,12 @@ export type QuestionChoice =
 
 export type TextQuestion = {
   ...BaseQuestion,
-  type: "text"
+  type: "text" | "multiline-text"
+}
+
+export type USRegionQuestion = {
+  ...BaseQuestion,
+  type: "us-region" | "multiple-us-region" | "us-state" | "multiple-us-state"
 }
 
 export type RadioGroupQuestion = {

@@ -28,6 +28,7 @@
     "babel-loader": "^8.0.4",
     "babel-plugin-flow-runtime": "^0.17.0",
     "flow-runtime": "^0.17.0",
+    "lodash": "^4.17.11",
     "prettier": "^1.15.3",
     "react": "alpha",
     "react-hot-loader": "next",

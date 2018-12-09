@@ -26,7 +26,8 @@ const AnimatedQuestionContainer = () => {
       question={{
         title: "What is your favorite flavor of ice cream?",
         name: "favorite-ice-cream",
-        description: "e.g. chocolate, vanilla, rocky road"
+        description: "e.g. chocolate, vanilla, rocky road",
+        isRequired: true
       }}
       answered={answered}
     >
@@ -44,6 +45,18 @@ storiesOf("QuestionContainer", module)
         description: "e.g. chocolate, vanilla, rocky road"
       }}
       answered
+    >
+      Some Question Content
+    </QuestionContainer>
+  ))
+  .add("Required", () => (
+    <QuestionContainer
+      question={{
+        title: "What is your favorite flavor of ice cream?",
+        name: "favorite-ice-cream",
+        description: "e.g. chocolate, vanilla, rocky road",
+        isRequired: true
+      }}
     >
       Some Question Content
     </QuestionContainer>

@@ -6,10 +6,11 @@ import CardHeader from "@material-ui/core/CardHeader"
 import CardContent from "@material-ui/core/CardContent"
 import type { BaseQuestion } from "../../material-survey-format.js.flow"
 import CheckIcon from "@material-ui/icons/CheckCircle"
-import { green } from "@material-ui/core/colors"
+import { green, grey } from "@material-ui/core/colors"
 import styled from "styled-components"
+import QuestionText from "../QuestionText"
 
-const CheckIconAnimator = styled.div`
+const AnimatedIcon = styled.div`
   transition: 300ms transform, 300ms opacity;
 `
 
@@ -30,8 +31,17 @@ export default ({
         subheader={question.description}
       />
       <CardContent>{children}</CardContent>
+      {!answered && question.isRequired && (
+        <div style={{ position: "absolute", right: 26, top: 14 }}>
+          <QuestionText
+            style={{ fontSize: 36, fontWeight: 800, color: grey[600] }}
+          >
+            *
+          </QuestionText>
+        </div>
+      )}
       <div style={{ position: "absolute", right: 16, top: 16 }}>
-        <CheckIconAnimator
+        <AnimatedIcon
           style={
             !answered
               ? { transform: "rotate(-45deg) scale(0.8)", opacity: 0 }
@@ -39,7 +49,7 @@ export default ({
           }
         >
           <CheckIcon style={{ width: 36, height: 36, color: green[600] }} />
-        </CheckIconAnimator>
+        </AnimatedIcon>
       </div>
     </Card>
   )
