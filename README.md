@@ -8,4 +8,9 @@ Want new features? Feel free to leave an issue or a pull request.
 
 ## Format
 
-The MaterialSurvey format is based off the [SurveyJS](https://github.com/surveyjs/surveyjs) format. Check [docs/material-survey-format.md](#material-survey-format).
+The MaterialSurvey format is based off the [SurveyJS](https://github.com/surveyjs/surveyjs) format. Check [docs/material-survey-format.md](blob/master/docs/material-survey-format.md).
+
+## Developing / Testing
+
+This project uses [storybook](https://storybook.js.org/). To develop features or
+create visual tests just run `yarn install && yarn storybook` in the cloned repository.
