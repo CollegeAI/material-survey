@@ -92,6 +92,15 @@ export type RatingQuestion = {
   maxRateDescription: string
 }
 
+export type SliderQuestion = {
+  ...BaseQuestion,
+  type: "slider",
+  choices: Array<QuestionChoice>,
+  min: number,
+  max: number,
+  step?: number
+}
+
 export type CommentQuestion = {
   ...BaseQuestion,
   type: "comment"
