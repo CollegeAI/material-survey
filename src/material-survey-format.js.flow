@@ -30,7 +30,12 @@ export type CheckboxQuestion = {
 export type DropdownQuestion = {
   ...BaseQuestion,
   type: "dropdown",
-  colCount?: number,
+  choices: Array<QuestionChoice>
+}
+
+export type MultipleDropdownQuestion = {
+  ...BaseQuestion,
+  type: "multiple-dropdown",
   choices: Array<QuestionChoice>
 }
 
