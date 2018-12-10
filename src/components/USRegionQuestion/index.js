@@ -60,13 +60,23 @@ const SVGPath = ({ id, d }) => {
 
 import type { USRegionQuestion } from "../../material-survey-format.js.flow"
 
-export default ({ question, onChangeAnswer }: USRegionQuestion) => {
+export default ({
+  question,
+  onChangeAnswer
+}: {
+  question: USRegionQuestion,
+  onChangeAnswer: Function
+}) => {
   const multiple = question.type.startsWith("multiple-")
   const region = question.type.endsWith("us-region")
 
-  const [answer, changeAnswer] = useState(
+  const [answer, changeAnswerState] = useState(
     question.defaultAnswer || (multiple ? [] : "")
   )
+  const changeAnswer = (...args) => {
+    changeAnswerState(...args)
+    onChangeAnswer(...args)
+  }
   const [hovered, changeHovered] = useState([])
 
   let selectedStates = []
