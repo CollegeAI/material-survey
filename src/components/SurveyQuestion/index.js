@@ -11,34 +11,71 @@ import ChoiceRankerQuestion from "../ChoiceRankerQuestion"
 import BooleanQuestion from "../BooleanQuestion"
 import TextQuestion from "../TextQuestion"
 import USRegionQuestion from "../USRegionQuestion"
+import CheckboxQuestion from "../CheckboxQuestion"
 
-export default ({ question }: { question: SurveyQuestion }) => {
+export default ({
+  question,
+  onChangeAnswer
+}: {
+  question: SurveyQuestion,
+  onChangeAnswer: Function
+}) => {
   switch (question.type) {
     case "slider": {
-      return <SliderQuestion question={question} />
+      return (
+        <SliderQuestion question={question} onChangeAnswer={onChangeAnswer} />
+      )
     }
     case "radiogroup": {
-      return <RadiogroupQuestion question={question} />
+      return (
+        <RadiogroupQuestion
+          question={question}
+          onChangeAnswer={onChangeAnswer}
+        />
+      )
     }
     case "multiline-text":
     case "text": {
-      return <TextQuestion question={question} />
+      return (
+        <TextQuestion question={question} onChangeAnswer={onChangeAnswer} />
+      )
     }
     case "dropdown":
     case "multiple-dropdown": {
-      return <DropboxQuestion question={question} />
+      return (
+        <DropdownQuestion question={question} onChangeAnswer={onChangeAnswer} />
+      )
     }
     case "checkbox": {
-      return <CheckboxQuestion question={question} />
+      return (
+        <CheckboxQuestion question={question} onChangeAnswer={onChangeAnswer} />
+      )
     }
     case "us-region":
     case "multiple-us-region":
     case "us-state":
     case "multiple-us-state": {
-      return <USRegionQuestion question={question} />
+      return (
+        <USRegionQuestion question={question} onChangeAnswer={onChangeAnswer} />
+      )
     }
     case "boolean": {
-      return <BooleanQuestion question={question} />
+      return (
+        <BooleanQuestion question={question} onChangeAnswer={onChangeAnswer} />
+      )
+    }
+    case "choiceranker": {
+      return (
+        <ChoiceRankerQuestion
+          question={question}
+          onChangeAnswer={onChangeAnswer}
+        />
+      )
+    }
+    case "rating": {
+      return (
+        <RatingQuestion question={question} onChangeAnswer={onChangeAnswer} />
+      )
     }
   }
 }

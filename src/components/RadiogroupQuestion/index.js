@@ -10,6 +10,7 @@ import QuestionText from "../QuestionText"
 const RadioItem = styled.div`
   display: flex;
   align-items: center;
+  cursor: pointer;
 `
 
 export default ({

@@ -66,7 +66,7 @@ export default ({
           <Slider
             onChange={(e, value) => {
               changeAnswer(value)
-              changeTextFieldText(value)
+              changeTextFieldText(value.toFixed(2))
               onChangeAnswer(value)
             }}
             style={{ opacity: answer === undefined ? 0.5 : 1 }}

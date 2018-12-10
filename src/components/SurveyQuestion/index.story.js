@@ -17,5 +17,6 @@ storiesOf("SurveyQuestion", module).add("Slider", () => (
       max: 4,
       step: 0.1
     }}
+    onChangeAnswer={action("onChangeAnswer")}
   />
 ))

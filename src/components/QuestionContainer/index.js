@@ -30,7 +30,7 @@ export default ({
   fadedTitle?: string
 }) => {
   return (
-    <Card style={{ position: "relative" }}>
+    <Card style={{ position: "relative", margin: 20 }}>
       <CardHeader
         style={{ paddingRight: 40 }}
         title={
