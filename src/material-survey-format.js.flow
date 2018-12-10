@@ -106,6 +106,12 @@ export type CommentQuestion = {
   type: "comment"
 }
 
+export type APIAutocompleteQuestion = {
+  ...BaseQuestion,
+  type: "api-autocomplete",
+  requestUrl: string
+}
+
 export type Question =
   | RadioGroupQuestion
   | CheckboxQuestion
@@ -127,5 +133,10 @@ export type SurveyMaterialFormat =
   | {
       pages: Array<Page>
     }
+
+export type AutocompleteRequestFunction = (
+  url: string,
+  value: string
+) => Array<{ value: string, label: string }>
 
 export default SurveyMaterialFormat

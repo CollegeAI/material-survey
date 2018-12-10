@@ -5,6 +5,7 @@ import React from "react"
 import { storiesOf } from "@storybook/react"
 import { action } from "@storybook/addon-actions"
 import type { SurveyMaterialFormat } from "../../material-survey-format.js.flow"
+import { zipCodeAutocompleteRequest } from "../APIAutocompleteQuestion/index.story.js"
 
 import Survey from "./"
 
@@ -57,9 +58,16 @@ storiesOf("Survey", module).add("Basic", () => (
             type: "us-region",
             title: "What region of the U.S. would you like to live in?",
             name: "preferred-us-region"
+          },
+          {
+            type: "api-autocomplete",
+            title: "What's your zip code?",
+            name: "zip-code",
+            requestUrl: "/zip-code"
           }
         ]
       }: SurveyMaterialFormat)
     }
+    autocompleteRequest={zipCodeAutocompleteRequest}
   />
 ))

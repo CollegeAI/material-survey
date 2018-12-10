@@ -33,7 +33,9 @@
     "prettier": "^1.15.3",
     "react": "alpha",
     "react-hot-loader": "next",
-    "styled-components": "^4.1.2"
+    "react-select": "^2.1.2",
+    "styled-components": "^4.1.2",
+    "zipcodes": "^8.0.0"
   },
   "dependencies": {}
 }

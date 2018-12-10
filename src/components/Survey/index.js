@@ -1,10 +1,19 @@
 // @flow
 
 import React, { useState } from "react"
-import type { SurveyMaterialFormat } from "../../material-survey-format.js.flow"
+import type {
+  SurveyMaterialFormat,
+  AutocompleteRequestFunction
+} from "../../material-survey-format.js.flow"
 import SurveyQuestion from "../SurveyQuestion"
 
-export default ({ form }: { form: SurveyMaterialFormat }) => {
+export default ({
+  form,
+  autocompleteRequest
+}: {
+  form: SurveyMaterialFormat,
+  autocompleteRequest?: AutocompleteRequestFunction
+}) => {
   const [currentPage, setCurrentPage] = useState(0)
   const [answerMap, setAnswerMap] = useState()
   const setAnswer = (name: string, value: any) => {
@@ -25,6 +34,7 @@ export default ({ form }: { form: SurveyMaterialFormat }) => {
           onChangeAnswer={(newAnswer: any) => {
             setAnswer(q.name, newAnswer)
           }}
+          autocompleteRequest={autocompleteRequest}
         />
       ))}
     </div>

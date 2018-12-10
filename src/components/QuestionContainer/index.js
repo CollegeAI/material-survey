@@ -41,7 +41,7 @@ export default ({
         }
         subheader={question.description}
       />
-      <CardContent>{children}</CardContent>
+      <CardContent style={{ overflowX: "hidden" }}>{children}</CardContent>
       {!answered && question.isRequired && (
         <div style={{ position: "absolute", right: 26, top: 14 }}>
           <QuestionText

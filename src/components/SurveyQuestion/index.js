@@ -1,7 +1,10 @@
 // @flow
 
 import React, { useState } from "react"
-import type { SurveyQuestion } from "../../material-survey-format.js.flow"
+import type {
+  SurveyQuestion,
+  AutocompleteRequestFunction
+} from "../../material-survey-format.js.flow"
 
 import SliderQuestion from "../SliderQuestion"
 import RadiogroupQuestion from "../RadiogroupQuestion"
@@ -12,13 +15,16 @@ import BooleanQuestion from "../BooleanQuestion"
 import TextQuestion from "../TextQuestion"
 import USRegionQuestion from "../USRegionQuestion"
 import CheckboxQuestion from "../CheckboxQuestion"
+import APIAutocompleteQuestion from "../APIAutocompleteQuestion"
 
 export default ({
   question,
-  onChangeAnswer
+  onChangeAnswer,
+  autocompleteRequest
 }: {
   question: SurveyQuestion,
-  onChangeAnswer: Function
+  onChangeAnswer: Function,
+  autocompleteRequest?: AutocompleteRequestFunction
 }) => {
   switch (question.type) {
     case "slider": {
@@ -75,6 +81,19 @@ export default ({
     case "rating": {
       return (
         <RatingQuestion question={question} onChangeAnswer={onChangeAnswer} />
+      )
+    }
+    case "api-autocomplete": {
+      if (!autocompleteRequest)
+        throw new Error(
+          "You must supply autocompleteRequest method to use APIAutocompleteQuestions"
+        )
+      return (
+        <APIAutocompleteQuestion
+          question={question}
+          onChangeAnswer={onChangeAnswer}
+          autocompleteRequest={autocompleteRequest}
+        />
       )
     }
   }
