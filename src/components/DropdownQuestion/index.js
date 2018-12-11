@@ -6,6 +6,7 @@ import QuestionContainer from "../QuestionContainer"
 import styled from "styled-components"
 import QuestionText from "../QuestionText"
 import Select from "@material-ui/core/Select"
+import ReactSelect from "react-select"
 import MenuItem from "@material-ui/core/MenuItem"
 import Checkbox from "@material-ui/core/Checkbox"
 import ListItemText from "@material-ui/core/ListItemText"
@@ -37,41 +38,62 @@ export default ({
 
   return (
     <QuestionContainer question={question} answered={answer !== undefined}>
-      <Select
-        multiple={multiple}
-        value={answer}
-        style={{ display: "flex" }}
-        onChange={e => {
-          changeAnswer(e.target.value)
-          onChangeAnswer(e.target.value)
-        }}
-        renderValue={
-          !multiple
-            ? selected => (
-                <SelectedValueContainer style={{ padding: 10 }}>
-                  {choiceMap[answer]}
-                </SelectedValueContainer>
-              )
-            : selected => (
-                <SelectedValueContainer>
-                  {selected.map(value => (
-                    <Chip
-                      style={{ marginRight: 8 }}
-                      key={value}
-                      label={choiceMap[value]}
-                    />
-                  ))}
-                </SelectedValueContainer>
-              )
-        }
-      >
-        {choiceList.map(choice => (
-          <MenuItem key={choice.value} value={choice.value}>
-            {multiple && <Checkbox checked={answer.includes(choice.value)} />}
-            {choice.text}
-          </MenuItem>
-        ))}
-      </Select>
+      {choiceList.length > 10 ? (
+        <ReactSelect
+          styles={{
+            menu: provided => ({
+              ...provided,
+              fontFamily: "Roboto, sans-serif"
+            }),
+            container: provided => ({
+              ...provided,
+              fontFamily: "Roboto, sans-serif"
+            })
+          }}
+          menuPortalTarget={document.body}
+          options={choiceList.map(c => ({ value: c.value, label: c.text }))}
+          onChange={({ value }) => {
+            changeAnswer(value)
+            onChangeAnswer(value)
+          }}
+        />
+      ) : (
+        <Select
+          multiple={multiple}
+          value={answer}
+          style={{ display: "flex" }}
+          onChange={e => {
+            changeAnswer(e.target.value)
+            onChangeAnswer(e.target.value)
+          }}
+          renderValue={
+            !multiple
+              ? selected => (
+                  <SelectedValueContainer style={{ padding: 10 }}>
+                    {choiceMap[answer]}
+                  </SelectedValueContainer>
+                )
+              : selected => (
+                  <SelectedValueContainer>
+                    {selected.map(value => (
+                      <Chip
+                        style={{ marginRight: 8 }}
+                        key={value}
+                        label={choiceMap[value]}
+                      />
+                    ))}
+                  </SelectedValueContainer>
+                )
+          }
+        >
+          {choiceList.map(choice => (
+            <MenuItem key={choice.value} value={choice.value}>
+              {multiple && <Checkbox checked={answer.includes(choice.value)} />}
+              {choice.text}
+            </MenuItem>
+          ))}
+        </Select>
+      )}
     </QuestionContainer>
   )
 }

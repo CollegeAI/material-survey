@@ -4,6 +4,7 @@ import React from "react"
 
 import { storiesOf } from "@storybook/react"
 import { action } from "@storybook/addon-actions"
+import range from "lodash/range"
 
 import DropdownQuestion from "./"
 
@@ -28,11 +29,22 @@ storiesOf("DropdownQuestion", module)
       onChangeAnswer={action("onChangeAnswer")}
     />
   ))
-  .add("Basic Multiple Dropdown", () => (
+  .add("Basic Many Answers", () => (
     <DropdownQuestion
       question={{
         name: "dropdown-example",
         title: "What fruit(s) do you like?",
+        type: "dropdown",
+        choices: range(99).map(n => `Answer ${n}`)
+      }}
+      onChangeAnswer={action("onChangeAnswer")}
+    />
+  ))
+  .add("Basic Multiple Dropdown", () => (
+    <DropdownQuestion
+      question={{
+        name: "dropdown-example",
+        title: "Search for an answer.",
         type: "multiple-dropdown",
         defaultAnswer: ["apple", "cherry"],
         choices: [

@@ -3,6 +3,7 @@
 import type { BooleanQuestion } from "../../material-survey-format.js.flow"
 import React, { useState } from "react"
 import Radio from "@material-ui/core/Radio"
+import Button from "@material-ui/core/Button"
 import QuestionContainer from "../QuestionContainer"
 import styled from "styled-components"
 import QuestionText from "../QuestionText"
@@ -12,10 +13,12 @@ const Row = styled.div`
   align-items: center;
 `
 
-const AnswerContainer = styled.div`
-  display: flex;
-  align-items: center;
-  cursor: pointer;
+const AnswerContainer = styled(Button)`
+  && {
+    padding: 0;
+    padding-right: 20px;
+    text-transform: none;
+  }
 `
 
 export default ({

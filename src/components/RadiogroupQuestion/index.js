@@ -4,13 +4,18 @@ import type { RadioGroupQuestion } from "../../material-survey-format.js.flow"
 import React, { useState } from "react"
 import Radio from "@material-ui/core/Radio"
 import QuestionContainer from "../QuestionContainer"
+import Button from "@material-ui/core/Button"
 import styled from "styled-components"
 import QuestionText from "../QuestionText"
 
-const RadioItem = styled.div`
-  display: flex;
-  align-items: center;
-  cursor: pointer;
+const RadioItem = styled(Button)`
+  && {
+    display: flex;
+    margin-top: 1px;
+    padding: 0;
+    padding-right: 20px;
+    text-transform: none;
+  }
 `
 
 export default ({
@@ -32,9 +37,9 @@ export default ({
           onChangeAnswer(value)
         }
         return (
-          <RadioItem key={value}>
-            <Radio onChange={onChange} checked={answer === value} />
-            <QuestionText onClick={onChange}>{text}</QuestionText>
+          <RadioItem onClick={onChange} key={value}>
+            <Radio tabIndex={-1} checked={answer === value} />
+            <QuestionText>{text}</QuestionText>
           </RadioItem>
         )
       })}

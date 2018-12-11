@@ -75,6 +75,7 @@ export default ({
             const choice = choices.find(c => c.value === cand)
             return (
               <ChoiceButton
+                disabled={animateDirection !== "middle"}
                 onClick={() => {
                   changeAnimateDirection("left")
                   changeTrialCount(trialCount + 1)

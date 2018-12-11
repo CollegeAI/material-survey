@@ -4,13 +4,18 @@ import type { CheckboxQuestion } from "../../material-survey-format.js.flow"
 import React, { useState } from "react"
 import Checkbox from "@material-ui/core/Checkbox"
 import QuestionContainer from "../QuestionContainer"
+import Button from "@material-ui/core/Button"
 import styled from "styled-components"
 import QuestionText from "../QuestionText"
 
-const CheckboxItem = styled.div`
-  display: flex;
-  align-items: center;
-  cursor: pointer;
+const CheckboxItem = styled(Button)`
+  && {
+    display: flex;
+    padding: 0;
+    padding-right: 20px;
+    text-transform: none;
+    margin-top: 1px;
+  }
 `
 
 export default ({
@@ -37,9 +42,9 @@ export default ({
             onChangeAnswer(newAnswer)
           }
           return (
-            <CheckboxItem key={value}>
-              <Checkbox onChange={onChange} checked={answer.includes(value)} />
-              <QuestionText onClick={onChange}>{text}</QuestionText>
+            <CheckboxItem onClick={onChange} key={value}>
+              <Checkbox tabIndex={-1} checked={answer.includes(value)} />
+              <QuestionText>{text}</QuestionText>
             </CheckboxItem>
           )
         })}
