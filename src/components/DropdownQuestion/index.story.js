@@ -25,6 +25,7 @@ storiesOf("DropdownQuestion", module)
           "Kiwi"
         ]
       }}
+      onChangeAnswer={action("onChangeAnswer")}
     />
   ))
   .add("Basic Multiple Dropdown", () => (
@@ -44,5 +45,6 @@ storiesOf("DropdownQuestion", module)
           { value: "kiwi", text: "Kiwi" }
         ]
       }}
+      onChangeAnswer={action("onChangeAnswer")}
     />
   ))

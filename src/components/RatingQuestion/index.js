@@ -10,7 +10,7 @@ import Slider from "@material-ui/lab/Slider"
 const Row = styled.div`
   display: flex;
   justify-content: space-between;
-  padding-top: 12px;
+  padding-top: 10px;
 `
 
 export default ({
@@ -27,7 +27,7 @@ export default ({
         onChange={(e, value) => {
           changeAnswer(value)
         }}
-        style={{ opacity: answer === undefined ? 0.5 : 1 }}
+        style={{ opacity: answer === undefined ? 0.5 : 1, marginTop: 10 }}
         value={answer === undefined ? 2 : answer}
         min={0}
         max={question.rankings - 1 || 4}

@@ -43,6 +43,7 @@ export default ({
         style={{ display: "flex" }}
         onChange={e => {
           changeAnswer(e.target.value)
+          onChangeAnswer(e.target.value)
         }}
         renderValue={
           !multiple

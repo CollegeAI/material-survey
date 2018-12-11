@@ -32,6 +32,12 @@ storiesOf("Survey", module).add("Basic", () => (
             choices: ["Brown Bear", "Grizzly Bear", "Black Bear", "Polar Bear"]
           },
           {
+            type: "checkbox",
+            title: "What kind of bears are brown?",
+            name: "brown-bear",
+            choices: ["Brown Bear", "Grizzly Bear", "Black Bear", "Polar Bear"]
+          },
+          {
             type: "choiceranker",
             title: "What kind of sauce do you like?",
             name: "sauce-ranking",
@@ -69,5 +75,6 @@ storiesOf("Survey", module).add("Basic", () => (
       }: SurveyMaterialFormat)
     }
     autocompleteRequest={zipCodeAutocompleteRequest}
+    onFinish={action("onFinish")}
   />
 ))

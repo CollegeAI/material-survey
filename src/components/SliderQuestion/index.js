@@ -12,6 +12,7 @@ import Slider from "@material-ui/lab/Slider"
 const Row = styled.div`
   display: flex;
   align-items: center;
+  padding-top: 10px;
 `
 
 const Col = styled.div`

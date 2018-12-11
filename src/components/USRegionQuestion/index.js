@@ -10,6 +10,7 @@ import classnames from "classnames"
 
 const USRegionSVG = styled.svg`
   fill: none;
+  max-width: 600px;
   & path {
     cursor: pointer;
     fill: #fff;
