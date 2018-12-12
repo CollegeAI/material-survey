@@ -13,6 +13,7 @@ import DropdownQuestion from "../DropdownQuestion"
 import ChoiceRankerQuestion from "../ChoiceRankerQuestion"
 import BooleanQuestion from "../BooleanQuestion"
 import TextQuestion from "../TextQuestion"
+import MultiTextQuestion from "../MultiTextQuestion"
 import USRegionQuestion from "../USRegionQuestion"
 import CheckboxQuestion from "../CheckboxQuestion"
 import APIAutocompleteQuestion from "../APIAutocompleteQuestion"
@@ -42,6 +43,14 @@ class SurveyQuestionComponent extends Component {
       case "radiogroup": {
         return (
           <RadiogroupQuestion
+            question={question}
+            onChangeAnswer={this.onChangeAnswer}
+          />
+        )
+      }
+      case "multipletext": {
+        return (
+          <MultiTextQuestion
             question={question}
             onChangeAnswer={this.onChangeAnswer}
           />

@@ -49,11 +49,11 @@ export default ({
   return (
     <div>
       {questions
-        // .filter(q =>
-        //   q.visibleIf === undefined
-        //     ? true
-        //     : evaluateExpression(q.visibleIf, answerMap)
-        // )
+        .filter(q =>
+          q.visibleIf === undefined
+            ? true
+            : evaluateExpression(q.visibleIf, answerMap)
+        )
         .map(q => (
           <SurveyQuestion
             key={q.name}

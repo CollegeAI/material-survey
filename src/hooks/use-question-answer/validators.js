@@ -3,7 +3,7 @@ import type { Validator } from "../../material-survey-format.js.flow"
 
 var emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
-export default (validator: Validator, value: any) => {
+const validate = (validator: Validator, value: any) => {
   switch (validator.type) {
     case "email": {
       if (typeof value !== "string") return false
@@ -16,8 +16,12 @@ export default (validator: Validator, value: any) => {
     case "numeric": {
       const { minValue, maxValue } = validator
       if (typeof value === "string") value = parseFloat(value)
-      if (isNaN(value)) return false
-      return value >= minValue && value <= maxValue
+      if (typeof value !== "object") {
+        if (isNaN(value)) return false
+        return value >= minValue && value <= maxValue
+      } else {
+        return Object.values(value).every(v => validate(validator, v))
+      }
     }
     case "text": {
       const { minLength, maxLength, allowDigits } = validator
@@ -44,3 +48,5 @@ export default (validator: Validator, value: any) => {
     }
   }
 }
+
+export default validate

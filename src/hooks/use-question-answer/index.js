@@ -18,9 +18,13 @@ export default (
   return [
     state,
     (newAnswer: any) => {
+      console.log({ newAnswer, validators })
       for (const validator of validators) {
         if (!checkValidator(validator, newAnswer)) {
-          changeState({ answer: newAnswer, error: validator.text })
+          changeState({
+            answer: newAnswer,
+            error: validator.text || "Invalid input, please correct!"
+          })
           return
         }
       }
