@@ -122,10 +122,10 @@ export type RatingQuestion = {
   ...BaseQuestion,
   type: "rating",
   rankings?: number,
-  choices: Array<QuestionChoice>,
-  minRateDescription: string,
+  rateValues?: Array<QuestionChoice>,
+  minRateDescription?: string,
   midRateDescription?: string,
-  maxRateDescription: string
+  maxRateDescription?: string
 }
 
 export type SliderQuestion = {

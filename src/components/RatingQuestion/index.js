@@ -21,6 +21,14 @@ export default ({
   onChangeAnswer: Function
 }) => {
   const [answer, changeAnswer] = useState(question.defaultAnswer || undefined)
+  const {
+    rateValues,
+    rankings,
+    minRateDescription,
+    maxRateDescription,
+    midRateDescription
+  } = question
+
   return (
     <QuestionContainer question={question} answered={answer !== undefined}>
       <Slider
@@ -28,18 +36,32 @@ export default ({
           changeAnswer(value)
         }}
         style={{ opacity: answer === undefined ? 0.5 : 1, marginTop: 10 }}
-        value={answer === undefined ? 2 : answer}
+        value={
+          answer === undefined
+            ? rateValues
+              ? rateValues[Math.floor(rateValues.length / 2)]
+              : 2
+            : answer
+        }
         min={0}
-        max={question.rankings - 1 || 4}
+        max={rankings - 1 || rateValues ? rateValues[rateValues.length - 1] : 4}
         step={1}
       />
-      <Row>
-        <QuestionText>{question.minRateDescription}</QuestionText>
-        {question.midRateDescription && (
-          <QuestionText>{question.midRateDescription}</QuestionText>
-        )}
-        <QuestionText>{question.maxRateDescription}</QuestionText>
-      </Row>
+      {rateValues ? (
+        <Row>
+          {rateValues.map(r => (
+            <QuestionText key={r}>{r}</QuestionText>
+          ))}
+        </Row>
+      ) : (
+        <Row>
+          <QuestionText>{minRateDescription}</QuestionText>
+          {midRateDescription && (
+            <QuestionText>{midRateDescription}</QuestionText>
+          )}
+          <QuestionText>{maxRateDescription}</QuestionText>
+        </Row>
+      )}
     </QuestionContainer>
   )
 }

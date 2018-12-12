@@ -48,7 +48,7 @@ export default ({
     >
       {question.items.map(item => (
         <Row key={item.name}>
-          <Label>{item.title}</Label>
+          <Label>{item.title || item.name}</Label>
           <TextField
             style={{ flexGrow: 1 }}
             value={answer[item.name] || ""}
