@@ -15,7 +15,6 @@ import useQuestionAnswer from "../../hooks/use-question-answer"
 const Row = styled.div`
   display: flex;
   align-items: center;
-  ${"" /* border-bottom: 1px solid #ccc; */}
   padding-bottom: 10px;
   margin-bottom: 10px;
 `
@@ -52,8 +51,10 @@ export default ({
           <Label>{item.title}</Label>
           <TextField
             style={{ flexGrow: 1 }}
-            value={answer[item.name]}
-            onChange={e => changeAnswer({ [item.name]: e.target.value })}
+            value={answer[item.name] || ""}
+            onChange={e =>
+              changeAnswer({ ...answer, [item.name]: e.target.value })
+            }
           />
         </Row>
       ))}

@@ -38,6 +38,6 @@
     "zipcodes": "^8.0.0"
   },
   "dependencies": {
-    "surveyjs-expression-eval": "^1.0.0"
+    "surveyjs-expression-eval": "^1.0.1"
   }
 }
