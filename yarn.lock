@@ -4197,6 +4197,10 @@ js-yaml@^3.12.0, js-yaml@^3.9.0:
     argparse "^1.0.7"
     esprima "^4.0.0"
 
+jsep@^0.3.4:
+  version "0.3.4"
+  resolved "https://registry.yarnpkg.com/jsep/-/jsep-0.3.4.tgz#55ebd4400c5c5861cb1ff949a7a4cd97fcaacaa0"
+
 jsesc@^1.3.0:
   version "1.3.0"
   resolved "http://registry.npmjs.org/jsesc/-/jsesc-1.3.0.tgz#46c3fec8c1892b12b0833db9bc7622176dbab34b"
@@ -6256,6 +6260,12 @@ supports-color@^5.3.0, supports-color@^5.4.0, supports-color@^5.5.0:
   resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-5.5.0.tgz#e2e69a44ac8772f78a1ec0b35b689df6530efc8f"
   dependencies:
     has-flag "^3.0.0"
+
+surveyjs-expression-eval@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/surveyjs-expression-eval/-/surveyjs-expression-eval-1.0.0.tgz#78f46640ee475310e2a2c7677af9b15a6f75263d"
+  dependencies:
+    jsep "^0.3.4"
 
 svg-url-loader@^2.3.2:
   version "2.3.2"

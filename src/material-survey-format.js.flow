@@ -1,3 +1,38 @@
+export type Validator =
+  | {
+      type: "email",
+      text: string
+    }
+  | {
+      type: "expression",
+      expression: string,
+      text: string
+    }
+  | {
+      type: "numeric",
+      minValue?: number,
+      maxValue?: number,
+      text: string
+    }
+  | {
+      type: "text",
+      minLength?: number,
+      maxLength?: number,
+      allowDigits?: boolean,
+      text: string
+    }
+  | {
+      type: "regex",
+      regex: string,
+      text: string
+    }
+  | {
+      type: "answercount",
+      text: string,
+      minCount?: number,
+      maxCount?: number
+    }
+
 export type BaseQuestion = {|
   name: string,
   title: string,
@@ -5,7 +40,8 @@ export type BaseQuestion = {|
   hasOther?: boolean,
   description?: string,
   visibleIf?: string,
-  defaultAnswer?: any
+  defaultAnswer?: any,
+  validators?: Array<Validator>
 |}
 
 export type QuestionChoice =
@@ -128,11 +164,14 @@ export type Page = {
   elements: Array<Question>
 }
 
-export type SurveyMaterialFormat =
-  | { questions: Array<Question> }
-  | {
-      pages: Array<Page>
-    }
+export type SurveyMaterialFormat = {
+  expressionLanguage: "surveyjs",
+  ...
+    | {| questions: Array<Question> |}
+    | {|
+        pages: Array<Page>
+      |}
+}
 
 export type AutocompleteRequestFunction = (
   url: string,

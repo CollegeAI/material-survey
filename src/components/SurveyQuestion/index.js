@@ -1,6 +1,6 @@
 // @flow
 
-import React, { useState } from "react"
+import React, { Component } from "react"
 import type {
   SurveyQuestion,
   AutocompleteRequestFunction
@@ -17,84 +17,115 @@ import USRegionQuestion from "../USRegionQuestion"
 import CheckboxQuestion from "../CheckboxQuestion"
 import APIAutocompleteQuestion from "../APIAutocompleteQuestion"
 
-export default ({
-  question,
-  onChangeAnswer,
-  autocompleteRequest
-}: {
+export type Props = {
   question: SurveyQuestion,
   onChangeAnswer: Function,
   autocompleteRequest?: AutocompleteRequestFunction
-}) => {
-  switch (question.type) {
-    case "slider": {
-      return (
-        <SliderQuestion question={question} onChangeAnswer={onChangeAnswer} />
-      )
-    }
-    case "radiogroup": {
-      return (
-        <RadiogroupQuestion
-          question={question}
-          onChangeAnswer={onChangeAnswer}
-        />
-      )
-    }
-    case "multiline-text":
-    case "text": {
-      return (
-        <TextQuestion question={question} onChangeAnswer={onChangeAnswer} />
-      )
-    }
-    case "dropdown":
-    case "multiple-dropdown": {
-      return (
-        <DropdownQuestion question={question} onChangeAnswer={onChangeAnswer} />
-      )
-    }
-    case "checkbox": {
-      return (
-        <CheckboxQuestion question={question} onChangeAnswer={onChangeAnswer} />
-      )
-    }
-    case "us-region":
-    case "multiple-us-region":
-    case "us-state":
-    case "multiple-us-state": {
-      return (
-        <USRegionQuestion question={question} onChangeAnswer={onChangeAnswer} />
-      )
-    }
-    case "boolean": {
-      return (
-        <BooleanQuestion question={question} onChangeAnswer={onChangeAnswer} />
-      )
-    }
-    case "choiceranker": {
-      return (
-        <ChoiceRankerQuestion
-          question={question}
-          onChangeAnswer={onChangeAnswer}
-        />
-      )
-    }
-    case "rating": {
-      return (
-        <RatingQuestion question={question} onChangeAnswer={onChangeAnswer} />
-      )
-    }
-    case "api-autocomplete": {
-      if (!autocompleteRequest)
-        throw new Error(
-          "You must supply autocompleteRequest method to use APIAutocompleteQuestions"
+}
+
+class SurveyQuestionComponent extends Component {
+  shouldComponentUpdate = (nextProps: Props) => {
+    return nextProps.question !== this.props.question
+  }
+  onChangeAnswer = (...args: any) => this.props.onChangeAnswer(...args)
+  render = () => {
+    const { question, onChangeAnswer, autocompleteRequest } = this.props
+    switch (question.type) {
+      case "slider": {
+        return (
+          <SliderQuestion
+            question={question}
+            onChangeAnswer={this.onChangeAnswer}
+          />
         )
-      return (
-        <APIAutocompleteQuestion
-          question={question}
-          onChangeAnswer={onChangeAnswer}
-          autocompleteRequest={autocompleteRequest}
-        />
-      )
+      }
+      case "radiogroup": {
+        return (
+          <RadiogroupQuestion
+            question={question}
+            onChangeAnswer={this.onChangeAnswer}
+          />
+        )
+      }
+      case "multiline-text":
+      case "text": {
+        return (
+          <TextQuestion
+            question={question}
+            onChangeAnswer={this.onChangeAnswer}
+          />
+        )
+      }
+      case "dropdown":
+      case "multiple-dropdown": {
+        return (
+          <DropdownQuestion
+            question={question}
+            onChangeAnswer={this.onChangeAnswer}
+          />
+        )
+      }
+      case "checkbox": {
+        return (
+          <CheckboxQuestion
+            question={question}
+            onChangeAnswer={this.onChangeAnswer}
+          />
+        )
+      }
+      case "us-region":
+      case "multiple-us-region":
+      case "us-state":
+      case "multiple-us-state": {
+        return (
+          <USRegionQuestion
+            question={question}
+            onChangeAnswer={this.onChangeAnswer}
+          />
+        )
+      }
+      case "boolean": {
+        return (
+          <BooleanQuestion
+            question={question}
+            onChangeAnswer={this.onChangeAnswer}
+          />
+        )
+      }
+      case "choiceranker": {
+        return (
+          <ChoiceRankerQuestion
+            question={question}
+            onChangeAnswer={this.onChangeAnswer}
+          />
+        )
+      }
+      case "rating": {
+        return (
+          <RatingQuestion
+            question={question}
+            onChangeAnswer={this.onChangeAnswer}
+          />
+        )
+      }
+      case "api-autocomplete": {
+        if (!autocompleteRequest)
+          throw new Error(
+            "You must supply autocompleteRequest method to use APIAutocompleteQuestions"
+          )
+        return (
+          <APIAutocompleteQuestion
+            question={question}
+            onChangeAnswer={this.onChangeAnswer}
+            autocompleteRequest={autocompleteRequest}
+          />
+        )
+      }
+      default: {
+        throw new Error(`Invalid Question Type: "${question.type}"`)
+      }
     }
   }
 }
+
+export default SurveyQuestionComponent

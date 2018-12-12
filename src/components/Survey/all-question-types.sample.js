@@ -5,6 +5,11 @@ import type { SurveyMaterialFormat } from "../../material-survey-format.js.flow"
 export default ({
   questions: [
     {
+      type: "text",
+      title: "How do you feel?",
+      name: "text-feeling"
+    },
+    {
       type: "dropdown",
       title: "How do you feel about this dropdown?",
       name: "dropdown-feeling",

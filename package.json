@@ -37,5 +37,7 @@
     "styled-components": "^4.1.2",
     "zipcodes": "^8.0.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "surveyjs-expression-eval": "^1.0.0"
+  }
 }

@@ -6,7 +6,7 @@ import CardHeader from "@material-ui/core/CardHeader"
 import CardContent from "@material-ui/core/CardContent"
 import type { BaseQuestion } from "../../material-survey-format.js.flow"
 import CheckIcon from "@material-ui/icons/CheckCircle"
-import { green, grey } from "@material-ui/core/colors"
+import { green, grey, red } from "@material-ui/core/colors"
 import styled from "styled-components"
 import QuestionText from "../QuestionText"
 
@@ -18,14 +18,20 @@ const FadedTitle = styled.span`
   opacity: 0.6;
 `
 
+const ErrorText = styled.div`
+  color: ${red[500]};
+`
+
 export default ({
   question,
   answered,
   children,
+  error,
   fadedTitle
 }: {
   question: BaseQuestion,
   answered: boolean,
+  error?: ?string,
   children: any,
   fadedTitle?: string
 }) => {
@@ -39,7 +45,12 @@ export default ({
             {fadedTitle && <FadedTitle> {fadedTitle}</FadedTitle>}
           </span>
         }
-        subheader={question.description}
+        subheader={
+          <span>
+            {question.description}
+            {error && <ErrorText>{error}</ErrorText>}
+          </span>
+        }
       />
       <CardContent style={{ overflowX: "hidden" }}>{children}</CardContent>
       {!answered && question.isRequired && (

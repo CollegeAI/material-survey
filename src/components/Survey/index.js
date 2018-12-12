@@ -11,6 +11,7 @@ import BackIcon from "@material-ui/icons/KeyboardArrowLeft"
 import NextIcon from "@material-ui/icons/KeyboardArrowRight"
 import CompleteIcon from "@material-ui/icons/Check"
 import styled from "styled-components"
+import evaluateExpression from "surveyjs-expression-eval"
 
 const SurveyActions = styled.div`
   display: flex;
@@ -27,15 +28,10 @@ export default ({
   onFinish: Object => any
 }) => {
   const [currentPage, setCurrentPage] = useState(0)
-  const [answerMap, setAnswerMap] = useState()
-  const setAnswer = (name: string, value: any) => {
-    setAnswerMap({
-      ...answerMap,
-      [name]: value
-    })
-  }
+  const [answerMap, setAnswerMap] = useState({})
 
   const questions = form.questions || form.pages[currentPage].elements
+  console.log({ currentPage, questions })
 
   let firstPage, lastPage
   if (form.questions) {
@@ -52,16 +48,25 @@ export default ({
 
   return (
     <div>
-      {questions.map(q => (
-        <SurveyQuestion
-          key={q.name}
-          question={q}
-          onChangeAnswer={(newAnswer: any) => {
-            setAnswer(q.name, newAnswer)
-          }}
-          autocompleteRequest={autocompleteRequest}
-        />
-      ))}
+      {questions
+        // .filter(q =>
+        //   q.visibleIf === undefined
+        //     ? true
+        //     : evaluateExpression(q.visibleIf, answerMap)
+        // )
+        .map(q => (
+          <SurveyQuestion
+            key={q.name}
+            question={q}
+            onChangeAnswer={(newAnswer: any) => {
+              setAnswerMap({
+                ...answerMap,
+                [q.name]: newAnswer
+              })
+            }}
+            autocompleteRequest={autocompleteRequest}
+          />
+        ))}
       <SurveyActions>
         <Button
           disabled={firstPage}
