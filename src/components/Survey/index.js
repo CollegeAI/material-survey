@@ -18,7 +18,7 @@ const SurveyActions = styled.div`
   justify-content: space-between;
 `
 
-export default ({
+export default function Survey({
   form,
   onFileUpload,
   onFinish,
@@ -28,7 +28,7 @@ export default ({
   autocompleteRequest?: AutocompleteRequestFunction,
   onFileUpload?: File => Promise<string>,
   onFinish: Object => any
-}) => {
+}) {
   const [currentPage, setCurrentPage] = useState(0)
   const [answerMap, setAnswerMap] = useState({})
 

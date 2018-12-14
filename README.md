@@ -4,6 +4,25 @@ A [material ui](https://material-ui.com/) survey library for displaying and retr
 
 This survey powers surveys on [collegeai.com](https://collegeai.com).
 
+```javascript
+import Survey from "material-survey"
+
+const App = () => (
+  <Survey
+    form={{
+      questions: [
+        {
+          name: "favorite-fruit",
+          title: "What is your favorite fruits?",
+          type: "dropdown",
+          choices: ["Apple", "Orange", "Watermelon"]
+        }
+      ]
+    }}
+  />
+)
+```
+
 Want new features? Found a bug? Feel free to [leave an issue or a pull request](https://github.com/CollegeAI/material-survey/pulls).
 
 ## [Interactive Demo](https://collegeai.github.io/material-survey)
