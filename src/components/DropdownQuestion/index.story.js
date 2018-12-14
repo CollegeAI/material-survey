@@ -9,7 +9,7 @@ import range from "lodash/range"
 import DropdownQuestion from "./"
 
 storiesOf("DropdownQuestion", module)
-  .add("Basic", () => (
+  .add("Single Choice", () => (
     <DropdownQuestion
       question={{
         name: "dropdown-example",
@@ -29,7 +29,7 @@ storiesOf("DropdownQuestion", module)
       onChangeAnswer={action("onChangeAnswer")}
     />
   ))
-  .add("Basic Many Answers", () => (
+  .add("Many Answers", () => (
     <DropdownQuestion
       question={{
         name: "dropdown-example",
@@ -40,7 +40,7 @@ storiesOf("DropdownQuestion", module)
       onChangeAnswer={action("onChangeAnswer")}
     />
   ))
-  .add("Basic Multiple Dropdown", () => (
+  .add("Multiple Dropdown", () => (
     <DropdownQuestion
       question={{
         name: "dropdown-example",
@@ -55,6 +55,33 @@ storiesOf("DropdownQuestion", module)
           { value: "pomegranate", text: "Pomegranate" },
           { value: "orange", text: "Orange" },
           { value: "kiwi", text: "Kiwi" }
+        ]
+      }}
+      onChangeAnswer={action("onChangeAnswer")}
+    />
+  ))
+  .add("Multiple Many Answers", () => (
+    <DropdownQuestion
+      question={{
+        name: "dropdown-example",
+        title: "Search for an answer.",
+        type: "multiple-dropdown",
+        defaultAnswer: ["apple", "cherry"],
+        choices: [
+          { value: "apple", text: "Apple" },
+          { value: "banana", text: "Banana" },
+          { value: "potato", text: "Potato" },
+          { value: "cherry", text: "Cherry" },
+          { value: "pomegranate", text: "Pomegranate" },
+          { value: "orange", text: "Orange" },
+          { value: "kiwi", text: "Kiwi" },
+          { value: "bilberry", text: "Bilberry" },
+          { value: "blackberry", text: "Blackberry" },
+          { value: "cherry", text: "Cherry" },
+          { value: "fig", text: "Fig" },
+          { value: "goji", text: "Goji Berry" },
+          { value: "goose", text: "Gooseberry" },
+          { value: "grape", text: "Grape" }
         ]
       }}
       onChangeAnswer={action("onChangeAnswer")}

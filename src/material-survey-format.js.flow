@@ -99,6 +99,19 @@ export type ChoiceRankerQuestion = {
   trials: number
 }
 
+export type DynamicMatrixQuestion = {
+  ...BaseQuestion,
+  type: "matrixdynamic",
+  choices: Array<QuestionChoice>,
+  columns: Array<{
+    name: string,
+    title?: string,
+    cellType: "dropdown" | "checkbox",
+    choices: Array<QuestionChoice>,
+    hasOther?: boolean
+  }>
+}
+
 export type BooleanQuestion = {
   ...BaseQuestion,
   type: "boolean"
