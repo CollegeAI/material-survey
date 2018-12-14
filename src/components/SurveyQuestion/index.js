@@ -18,12 +18,19 @@ import USRegionQuestion from "../USRegionQuestion"
 import CheckboxQuestion from "../CheckboxQuestion"
 import APIAutocompleteQuestion from "../APIAutocompleteQuestion"
 import DynamicMatrixQuestion from "../DynamicMatrixQuestion"
+import FileQuestion from "../FileQuestion"
+import styled from "styled-components"
 
 export type Props = {
   question: SurveyQuestion,
   onChangeAnswer: Function,
-  autocompleteRequest?: AutocompleteRequestFunction
+  autocompleteRequest?: AutocompleteRequestFunction,
+  onFileUpload?: File => Promise<string>
 }
+
+const Red = styled.div`
+  color: red;
+`
 
 class SurveyQuestionComponent extends Component {
   shouldComponentUpdate = (nextProps: Props) => {
@@ -31,7 +38,13 @@ class SurveyQuestionComponent extends Component {
   }
   onChangeAnswer = (...args: any) => this.props.onChangeAnswer(...args)
   render = () => {
-    const { question, onChangeAnswer, autocompleteRequest } = this.props
+    const {
+      question,
+      onChangeAnswer,
+      autocompleteRequest,
+      onFileUpload
+    } = this.props
+
     switch (question.type) {
       case "slider": {
         return (
@@ -140,7 +153,20 @@ class SurveyQuestionComponent extends Component {
         )
       }
       case "file": {
-        return <div>asd</div>
+        if (!onFileUpload)
+          return (
+            <Red>
+              File Question Type requires an upload handler. Specify
+              onFileUpload.
+            </Red>
+          )
+        return (
+          <FileQuestion
+            question={question}
+            onFileUpload={onFileUpload}
+            onChangeAnswer={this.onChangeAnswer}
+          />
+        )
       }
       default: {
         throw new Error(`Invalid Question Type: "${question.type}"`)

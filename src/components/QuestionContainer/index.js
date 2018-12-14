@@ -41,7 +41,7 @@ export default ({
         style={{ paddingRight: 40 }}
         title={
           <span>
-            {question.title}
+            {question.title || question.name}
             {fadedTitle && <FadedTitle> {fadedTitle}</FadedTitle>}
           </span>
         }

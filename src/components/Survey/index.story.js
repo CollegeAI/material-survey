@@ -22,6 +22,7 @@ storiesOf("Survey", module)
     <Survey
       form={workaroundInterview}
       autocompleteRequest={zipCodeAutocompleteRequest}
+      onFileUpload={() => Promise.resolve("http://path.to/file")}
       onFinish={action("onFinish")}
     />
   ))

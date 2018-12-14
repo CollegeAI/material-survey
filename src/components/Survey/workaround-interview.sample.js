@@ -1458,13 +1458,13 @@ export default {
             "Waste Management and Remediation Services ",
             "Wholesale Trade "
           ]
+        },
+        {
+          type: "file",
+          name: "Upload your CV or Resume",
+          description: "(optional)",
+          maxSize: 0
         }
-        // {
-        //   type: "file",
-        //   name: "Upload your CV or Resume",
-        //   description: "(optional)",
-        //   maxSize: 0
-        // }
       ]
     },
     {

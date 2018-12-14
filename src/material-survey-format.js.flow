@@ -141,6 +141,12 @@ export type RatingQuestion = {
   maxRateDescription?: string
 }
 
+export type FileQuestion = {
+  ...BaseQuestion,
+  type: "file",
+  maxSize?: number
+}
+
 export type SliderQuestion = {
   ...BaseQuestion,
   type: "slider",

@@ -20,11 +20,13 @@ const SurveyActions = styled.div`
 
 export default ({
   form,
+  onFileUpload,
   onFinish,
   autocompleteRequest
 }: {
   form: SurveyMaterialFormat,
   autocompleteRequest?: AutocompleteRequestFunction,
+  onFileUpload?: File => Promise<string>,
   onFinish: Object => any
 }) => {
   const [currentPage, setCurrentPage] = useState(0)
@@ -57,6 +59,7 @@ export default ({
           <SurveyQuestion
             key={q.name}
             question={q}
+            onFileUpload={onFileUpload}
             onChangeAnswer={(newAnswer: any) => {
               setAnswerMap({
                 ...answerMap,
