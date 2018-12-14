@@ -31,7 +31,6 @@ export default ({
   const [answerMap, setAnswerMap] = useState({})
 
   const questions = form.questions || form.pages[currentPage].elements
-  console.log({ currentPage, questions })
 
   let firstPage, lastPage
   if (form.questions) {

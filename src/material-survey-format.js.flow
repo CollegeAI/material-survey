@@ -106,7 +106,7 @@ export type DynamicMatrixQuestion = {
   columns: Array<{
     name: string,
     title?: string,
-    cellType: "dropdown" | "checkbox",
+    cellType: "dropdown" | "checkbox" | "text",
     choices: Array<QuestionChoice>,
     hasOther?: boolean
   }>

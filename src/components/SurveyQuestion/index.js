@@ -17,6 +17,7 @@ import MultiTextQuestion from "../MultiTextQuestion"
 import USRegionQuestion from "../USRegionQuestion"
 import CheckboxQuestion from "../CheckboxQuestion"
 import APIAutocompleteQuestion from "../APIAutocompleteQuestion"
+import DynamicMatrixQuestion from "../DynamicMatrixQuestion"
 
 export type Props = {
   question: SurveyQuestion,
@@ -129,6 +130,17 @@ class SurveyQuestionComponent extends Component {
             autocompleteRequest={autocompleteRequest}
           />
         )
+      }
+      case "matrixdynamic": {
+        return (
+          <DynamicMatrixQuestion
+            question={question}
+            onChangeAnswer={this.onChangeAnswer}
+          />
+        )
+      }
+      case "file": {
+        return <div>asd</div>
       }
       default: {
         throw new Error(`Invalid Question Type: "${question.type}"`)

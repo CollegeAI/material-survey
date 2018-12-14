@@ -18,7 +18,6 @@ export default (
   return [
     state,
     (newAnswer: any) => {
-      console.log({ newAnswer, validators })
       for (const validator of validators) {
         if (!checkValidator(validator, newAnswer)) {
           changeState({
