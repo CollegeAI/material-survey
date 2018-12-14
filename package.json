@@ -36,6 +36,7 @@
     "prettier": "^1.15.3",
     "raw-loader": "^1.0.0",
     "react-hot-loader": "next",
+    "react-markdown": "^4.0.4",
     "zipcodes": "^8.0.0"
   },
   "dependencies": {

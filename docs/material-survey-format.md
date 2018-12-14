@@ -293,3 +293,16 @@ Expressions can use multiple questions.
 ### "surveyjs"
 
 The expression language defined by the original [surveyjs project](https://surveyjs.io). Details regarding this expression format can be found in the [surveyjs-expression-eval](https://github.com/CollegeAI/surveyjs-expression-eval).
+
+## Output Format
+
+The output of the survey is a JSON object with a key representing each question.
+
+e.g.
+
+````javascript
+{
+  "favorite-foods": ["spaghetti", "ramen"],
+  "inception-rating": 4.8
+}```
+````

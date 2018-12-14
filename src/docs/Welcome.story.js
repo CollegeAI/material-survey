@@ -4,10 +4,18 @@ import React from "react"
 
 import { storiesOf } from "@storybook/react"
 import styled from "styled-components"
+import README from "!raw-loader!../../README.md"
+import Markdown from "react-markdown"
 
-storiesOf("Welcome! Meet Material Survey", module).add("Basic", () => (
+const Container = styled.div`
+  && {
+    font-family: Roboto, sans-serif;
+    min-height: 100vh;
+  }
+`
+
+storiesOf("_ Meet Material Survey", module).add("Basic", () => (
   <Container>
-    <h1>Introducing Material Survey</h1>
-    <p>Material Survey is a </p>
+    <Markdown source={README} />
   </Container>
 ))
