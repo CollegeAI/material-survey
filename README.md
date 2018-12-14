@@ -8,7 +8,7 @@ Want new features? Feel free to leave an issue or a pull request.
 
 ## Format
 
-The MaterialSurvey format is based off the [SurveyJS](https://github.com/surveyjs/surveyjs) format. Check [docs/material-survey-format.md](blob/master/docs/material-survey-format.md).
+The MaterialSurvey format is based off the [SurveyJS](https://github.com/surveyjs/surveyjs) format. Check [docs/material-survey-format.md](https://github.com/CollegeAI/material-survey/blob/master/docs/material-survey-format.md).
 
 ## Developing / Testing
 
