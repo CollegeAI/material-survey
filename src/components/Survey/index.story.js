@@ -26,3 +26,11 @@ storiesOf("Survey", module)
       onFinish={action("onFinish")}
     />
   ))
+  .add("WorkAround Interview with Preloaded Answers", () => (
+    <Survey
+      form={workaroundInterview}
+      autocompleteRequest={zipCodeAutocompleteRequest}
+      onFileUpload={() => Promise.resolve("http://path.to/file")}
+      onFinish={action("onFinish")}
+    />
+  ))

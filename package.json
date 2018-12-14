@@ -23,25 +23,28 @@
     "@material-ui/icons": "^3.0.1",
     "@material-ui/lab": "^3.0.0-alpha.24",
     "@storybook/addon-actions": "^4.1.0-alpha.11",
+    "@storybook/addon-info": "^4.1.1",
     "@storybook/addon-links": "^4.1.0-alpha.11",
     "@storybook/addons": "^4.1.0-alpha.11",
     "@storybook/react": "next",
+    "@storybook/storybook-deployer": "^2.8.1",
     "babel-loader": "^8.0.4",
     "babel-plugin-flow-runtime": "^0.17.0",
     "babel-preset-react-app": "^6.1.0",
     "flow-runtime": "^0.17.0",
     "lodash": "^4.17.11",
     "prettier": "^1.15.3",
+    "raw-loader": "^1.0.0",
     "react-hot-loader": "next",
     "zipcodes": "^8.0.0"
   },
   "dependencies": {
-    "surveyjs-expression-eval": "^1.0.1",
-    "styled-components": "^4.1.2",
-    "lodash": "^4.17.11",
     "@seveibar/k-choice-sort": "^1.0.8",
+    "lodash": "^4.17.11",
     "react": "alpha",
     "react-dropzone": "^8.0.1",
-    "react-select": "^2.1.2"
+    "react-select": "^2.1.2",
+    "styled-components": "^4.1.2",
+    "surveyjs-expression-eval": "^1.0.1"
   }
 }

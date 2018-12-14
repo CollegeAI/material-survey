@@ -15,5 +15,6 @@ storiesOf("CheckboxQuestion", module).add("Basic", () => (
       type: "checkbox",
       choices: ["Getting Swoll", "Friends & Family", "Completing this question"]
     }}
+    onChangeAnswer={action("onChangeAnswer")}
   />
 ))

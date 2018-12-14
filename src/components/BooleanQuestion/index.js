@@ -1,7 +1,8 @@
 // @flow
 
-import type { BooleanQuestion } from "../../material-survey-format.js.flow"
+import type { BooleanQuestion as BooleanQuestionType } from "../../material-survey-format.js.flow"
 import React, { useState } from "react"
+import useQuestionAnswer from "../../hooks/use-question-answer"
 import Radio from "@material-ui/core/Radio"
 import Button from "@material-ui/core/Button"
 import QuestionContainer from "../QuestionContainer"
@@ -21,33 +22,32 @@ const AnswerContainer = styled(Button)`
   }
 `
 
-export default ({
+export default function BooleanQuestion({
   question,
   onChangeAnswer
 }: {
-  question: BooleanQuestion,
+  question: BooleanQuestionType,
   onChangeAnswer: Function
-}) => {
-  const [answer, changeAnswer] = useState(question.defaultAnswer || undefined)
+}) {
+  const [{ answer, error }, changeAnswer] = useQuestionAnswer(
+    question,
+    onChangeAnswer
+  )
   return (
-    <QuestionContainer question={question} answered={answer !== undefined}>
+    <QuestionContainer
+      error={error}
+      question={question}
+      answered={answer !== undefined}
+    >
       <Row>
         <AnswerContainer
-          onClick={() => {
-            changeAnswer(true)
-            onChangeAnswer(true)
-          }}
+          onClick={() => changeAnswer(true)}
           style={{ marginRight: 20 }}
         >
           <Radio checked={answer === true} />
           <QuestionText>Yes</QuestionText>
         </AnswerContainer>
-        <AnswerContainer
-          onClick={() => {
-            changeAnswer(false)
-            onChangeAnswer(false)
-          }}
-        >
+        <AnswerContainer onClick={() => changeAnswer(false)}>
           <Radio checked={answer === false} />
           <QuestionText>No</QuestionText>
         </AnswerContainer>

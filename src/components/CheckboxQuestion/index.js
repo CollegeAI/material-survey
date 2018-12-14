@@ -1,12 +1,13 @@
 // @flow
 
-import type { CheckboxQuestion } from "../../material-survey-format.js.flow"
-import React, { useState } from "react"
+import type { CheckboxQuestion as CheckboxQuestionType } from "../../material-survey-format.js.flow"
+import React from "react"
 import Checkbox from "@material-ui/core/Checkbox"
 import QuestionContainer from "../QuestionContainer"
 import Button from "@material-ui/core/Button"
 import styled from "styled-components"
 import QuestionText from "../QuestionText"
+import useQuestionAnswer from "../../hooks/use-question-answer"
 
 const CheckboxItem = styled(Button)`
   && {
@@ -18,16 +19,24 @@ const CheckboxItem = styled(Button)`
   }
 `
 
-export default ({
+export default function CheckboxQuestion({
   question,
   onChangeAnswer
 }: {
-  question: CheckboxQuestion,
+  question: CheckboxQuestionType,
   onChangeAnswer: Function
-}) => {
-  const [answer, changeAnswer] = useState(question.defaultAnswer || [])
+}) {
+  const [{ answer, error }, changeAnswer] = useQuestionAnswer(
+    question,
+    onChangeAnswer,
+    []
+  )
   return (
-    <QuestionContainer question={question} answered={answer.length > 0}>
+    <QuestionContainer
+      question={question}
+      answered={answer.length > 0}
+      error={error}
+    >
       {question.choices
         .map(choice =>
           typeof choice === "string" ? { value: choice, text: choice } : choice
@@ -38,8 +47,8 @@ export default ({
               ? answer.filter(a => a !== value)
               : answer.concat([value])
             ).sort()
+            console.log("changing answer", { newAnswer, answer })
             changeAnswer(newAnswer)
-            onChangeAnswer(newAnswer)
           }
           return (
             <CheckboxItem onClick={onChange} key={value}>

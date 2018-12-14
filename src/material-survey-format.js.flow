@@ -150,7 +150,6 @@ export type FileQuestion = {
 export type SliderQuestion = {
   ...BaseQuestion,
   type: "slider",
-  choices: Array<QuestionChoice>,
   min: number,
   max: number,
   step?: number

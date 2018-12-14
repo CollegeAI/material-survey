@@ -12,11 +12,11 @@ export default {
           name: "refugee",
           title:
             "Have you been forced to leave your home due to climate change, conflict, or economic instability?",
-          choices: ["Yes", "No"]
+          choices: [{ text: "Yes", value: "yes" }, { text: "No", value: "no" }]
         },
         {
           type: "dropdown",
-          name: "home",
+          name: "home_country",
           visibleIf: '{refugee} = "Yes"',
           title: "What is your home country?  Where are you from?",
           hasOther: true,
@@ -433,7 +433,11 @@ export default {
           title: "What is your gender?",
           description:
             "We ask because some jobs are Market or Social Science Research Surveys where the client wants respondents to be a specific gender.",
-          choices: ["Male", "Female", "Other"]
+          choices: [
+            { text: "Male", value: "male" },
+            { text: "Female", value: "female" },
+            { text: "Other", value: "other" }
+          ]
         },
         {
           type: "text",
@@ -476,36 +480,27 @@ export default {
       elements: [
         {
           type: "radiogroup",
-          name: "ed_level",
+          name: "education_level",
           title: "What is your highest level of education?",
           isRequired: true,
-          validators: [
-            {
-              type: "numeric",
-              minValue: 0,
-              maxValue: 50
-            }
-          ],
+          validators: [],
           choices: [
-            "no school",
-            {
-              value: "less than 8 years of primary school",
-              text: "primary school"
-            },
-            "some high school",
-            "high school diploma",
-            "some college",
-            "associate's degree",
-            "bachelor's degree",
-            "master's degree",
-            "PhD"
+            { value: "no school", text: "No Schooling" },
+            { value: "primary school", text: "Primary School" },
+            { value: "some high school", text: "Some High School" },
+            { value: "high school", text: "Graduated High School" },
+            { value: "some college", text: "Some High School" },
+            { value: "associates", text: "Associate's Degree" },
+            { value: "bachelors", text: "Bachelor's Degree" },
+            { value: "masters", text: "Master's Degree" },
+            { value: "phd", text: "PhD" }
           ]
         },
         {
           type: "dropdown",
-          name: "field",
+          name: "education_field",
           visibleIf:
-            '{ed_level} = "some college"or\n{ed_level} = "associate\'s degree"or\n{ed_level} = "bachelor\'s degree" or\n{ed_level} = "master\'s degree" or\n{ed_level} = "PhD"',
+            '{ed_level} = "some college"or\n{ed_level} = "associates"or\n{ed_level} = "bachelors" or\n{ed_level} = "masters" or\n{ed_level} = "phd"',
           title: "What is your primary field/area of study?",
           hasOther: true,
           choices: [
@@ -556,27 +551,37 @@ export default {
           type: "checkbox",
           name: "tests",
           title: "Did you take any of these tests?",
-          description: "check all that apply",
+          description: "Check all that apply",
           hasOther: true,
           choices: [
-            "TOEFL iBT (Test of English as a Foreign Language Internet-Based Test)",
-            "TOEFL paper based test",
-            "IELTS Academic (International English Language Testing System)",
-            "PTE Academic (Pearsons Test of English Academic)",
+            {
+              value: "toefl_ibt",
+              text:
+                "TOEFL iBT (Test of English as a Foreign Language Internet-Based Test)"
+            },
+            { value: "toefl_paper", text: "TOEFL paper based test" },
+            {
+              value: "ielts",
+              text:
+                "IELTS Academic (International English Language Testing System)"
+            },
+            {
+              value: "pte",
+              text: "PTE Academic (Pearsons Test of English Academic)"
+            },
             {
               value:
                 "C1 Advanced or C2 Proficiency (Cambridge English: Advanced or Proficiency)",
-              text: "Cambridge English Test (A2, B1, B2, C1, C2)"
+              text: "cambridge_english"
             },
-            "SAT",
-            "ACT"
+            { value: "sat", text: "SAT" },
+            { value: "act", text: "ACT" }
           ]
         },
         {
           type: "multipletext",
-          name: "TOEFL iBT",
-          visibleIf:
-            '{tests} contains "TOEFL iBT (Test of English as a Foreign Language Internet-Based Test)"',
+          name: "toefl_ibt",
+          visibleIf: '{tests} contains "toefl_ibt"',
           title: "Enter your TOEFL iBT scores",
           validators: [
             {
@@ -587,68 +592,66 @@ export default {
           ],
           items: [
             {
-              name: "text1",
-              title: "reading"
+              name: "reading",
+              title: "Reading"
             },
             {
-              name: "text2",
-              title: "writing"
+              name: "writing",
+              title: "Writing"
             },
             {
-              name: "text3",
-              title: "listening"
+              name: "listening",
+              title: "Listening"
             },
             {
-              name: "text4",
-              title: "speaking"
+              name: "speaking",
+              title: "Speaking"
             },
             {
-              name: "text5",
-              title: "total"
+              name: "total",
+              title: "Total"
             }
           ]
         },
         {
           type: "multipletext",
-          name: "TOEFL",
-          visibleIf: '{tests} contains "TOEFL paper based test"',
+          name: "toefl",
+          visibleIf: '{tests} contains "toefl"',
           title: "Enter your TOEFL paper based scores",
           items: [
             {
-              name: "text1",
-              title: "reading"
+              name: "reading",
+              title: "Reading"
             },
             {
-              name: "text2",
-              title: "writing"
+              name: "writing",
+              title: "Writing"
             },
             {
-              name: "text3",
-              title: "listening"
+              name: "listening",
+              title: "Listening"
             },
             {
-              name: "text4",
-              title: "speaking"
+              name: "speaking",
+              title: "Speaking"
             },
             {
-              name: "text5",
-              title: "total"
+              name: "total",
+              title: "Total"
             }
           ]
         },
         {
           type: "rating",
-          name: "IELTS",
-          visibleIf:
-            '{tests} contains "IELTS Academic (International English Language Testing System)"',
+          name: "ielts",
+          visibleIf: '{tests} contains "ielts"',
           title: "Enter your IELTS band score",
           rateValues: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
         },
         {
           type: "text",
-          name: "PTE",
-          visibleIf:
-            '{tests} contains "PTE Academic (Pearsons Test of English Academic)"',
+          name: "pte",
+          visibleIf: '{tests} contains "pte"',
           title: "Enter your PTE Score",
           description: "overall score range is 10-90",
           inputType: "number",
@@ -656,52 +659,41 @@ export default {
         },
         {
           type: "radiogroup",
-          name: "Cambridge_test",
-          visibleIf:
-            '{tests} contains "C1 Advanced or C2 Proficiency (Cambridge English: Advanced or Proficiency)"',
+          name: "cambridge_english",
+          visibleIf: '{tests} contains "cambridge_english"',
           title: "Which Cambridge English Test did you take?",
           choices: [
             "A2 Key",
             "B1 Preliminary",
             "B2 First",
-            {
-              value: "item1",
-              text: "C1 Advanced (CAE)"
-            },
-            {
-              value: "item2",
-              text: "C2 Proficiency (CPE)"
-            },
-            {
-              value: "item3",
-              text: "B1 Business Preliminary (BEC)"
-            },
-            {
-              value: "item4",
-              text: "B2 Business Vantage (BEC Vantage)"
-            },
-            {
-              value: "item5",
-              text: "C1 Business Higher (BEC Higher)"
-            }
+            "C1 Advanced (CAE)",
+            "C2 Proficiency (CPE)",
+            "B1 Business Preliminary (BEC)",
+            "B2 Business Vantage (BEC Vantage)",
+            "C1 Business Higher (BEC Higher)"
           ]
         },
         {
           type: "text",
-          name: "Cambridge_score",
-          visibleIf:
-            '{tests} contains "C1 Advanced or C2 Proficiency (Cambridge English: Advanced or Proficiency)"',
+          name: "cambridge_english_score",
+          visibleIf: '{tests} contains "cambridge_english"',
           title: "What was your score on the Cambridge English test you took?",
           inputType: "number",
           placeHolder: "80-230"
         },
         {
           type: "text",
-          name: "SAT_date",
-          visibleIf: '{tests} contains "SAT"',
+          name: "sat_date",
+          visibleIf: '{tests} contains "sat"',
           title: "What year did you take the SAT?",
-          description: "you can enter any number for the month and day",
+          description: "You can enter any number for the month and day",
           inputType: "date",
+          validators: [
+            {
+              regex: "[0-9]4",
+              text: "Please enter a four number year e.g. 1997"
+            }
+          ],
           placeHolder: "YYYY"
         },
         {
