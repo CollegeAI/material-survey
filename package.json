@@ -9,7 +9,8 @@
     "build": "npm run build:formatter",
     "build:format": "babel --plugins=babel-plugin-flow-runtime --presets=@babel/preset-flow ./src/material-survey-format.js.flow --out-file=./src/material-survey-format.js",
     "build-storybook": "build-storybook",
-    "build:babel": "NODE_ENV=production babel ./src --presets=react-app --out-dir=./dist"
+    "build:babel": "NODE_ENV=production babel ./src --presets=react-app --out-dir=./dist",
+    "deploy-storybook": "storybook-to-ghpages"
   },
   "author": "Severin Ibarluzea, CollegeAI Inc.",
   "license": "ISC",

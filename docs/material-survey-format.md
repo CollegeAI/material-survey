@@ -4,7 +4,7 @@ This document fully specifies the Material Survey Format, the JSON input format 
 
 The MaterialSurvey format is based off the [SurveyJS](https://github.com/surveyjs/surveyjs) format.
 
-The [material-survey-format.js.flow](#) file contains the type definitions.
+The `material-survey-format.js.flow` file contains the type definitions.
 
 ## Structure
 
