@@ -38,11 +38,13 @@ export default ({
 
   return choiceList.length > 10 ? (
     <ReactSelect
+      className="material-survey-selection"
       styles={{
         menu: provided => ({
           ...provided,
           fontFamily: "Roboto, sans-serif"
         }),
+        menuPortal: provided => ({ ...provided, zIndex: 10000 }),
         container: provided => ({
           ...provided,
           fontFamily: "Roboto, sans-serif"
@@ -56,7 +58,6 @@ export default ({
   ) : (
     <Select
       multiple={multiple}
-      className="material-survey-selection"
       value={answer}
       style={{ display: "flex" }}
       onChange={e => changeAnswer(e.target.value)}

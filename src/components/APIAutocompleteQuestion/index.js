@@ -44,7 +44,8 @@ export default ({
           container: provided => ({
             ...provided,
             fontFamily: "Roboto, sans-serif"
-          })
+          }),
+          menuPortal: provided => ({ ...provided, zIndex: 10000 })
         }}
         loadOptions={inputValue =>
           autocompleteRequest(question.requestUrl, inputValue)
