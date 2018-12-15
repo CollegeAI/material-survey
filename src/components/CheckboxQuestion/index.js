@@ -47,7 +47,6 @@ export default function CheckboxQuestion({
               ? answer.filter(a => a !== value)
               : answer.concat([value])
             ).sort()
-            console.log("changing answer", { newAnswer, answer })
             changeAnswer(newAnswer)
           }
           return (

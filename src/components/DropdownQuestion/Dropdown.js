@@ -56,6 +56,7 @@ export default ({
   ) : (
     <Select
       multiple={multiple}
+      className="material-survey-selection"
       value={answer}
       style={{ display: "flex" }}
       onChange={e => changeAnswer(e.target.value)}

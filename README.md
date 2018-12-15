@@ -16,7 +16,7 @@ const App = () => (
       questions: [
         {
           name: "favorite-fruit",
-          title: "What is your favorite fruits?",
+          title: "What is your favorite fruit?",
           type: "dropdown",
           choices: ["Apple", "Orange", "Watermelon"]
         }

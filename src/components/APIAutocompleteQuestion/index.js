@@ -35,6 +35,7 @@ export default ({
   return (
     <QuestionContainer question={question} answered={answer !== undefined}>
       <AsyncSelect
+        className="material-survey-selection"
         styles={{
           menu: provided => ({
             ...provided,
