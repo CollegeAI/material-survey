@@ -5,10 +5,13 @@ A [material ui](https://material-ui.com/) survey library for displaying and retr
 This survey powers surveys on [collegeai.com](https://collegeai.com).
 
 ```javascript
-import Survey from "material-survey"
+import Survey from "material-survey/components/Survey"
 
 const App = () => (
   <Survey
+    onFinish={answers => {
+      // Do something with the answers
+    }}
     form={{
       questions: [
         {
