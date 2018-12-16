@@ -3,7 +3,7 @@ import type { Validator } from "../../material-survey-format.js.flow"
 
 var emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
-const validate = (validator: Validator, value: any) => {
+const validate = (validator: Validator, value: any, answerMap?: Object) => {
   switch (validator.type) {
     case "email": {
       if (typeof value !== "string") return false

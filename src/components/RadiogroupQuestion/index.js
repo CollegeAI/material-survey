@@ -2,6 +2,7 @@
 
 import type { RadioGroupQuestion } from "../../material-survey-format.js.flow"
 import React, { useState } from "react"
+import useQuestionAnswer from "../../hooks/use-question-answer"
 import Radio from "@material-ui/core/Radio"
 import QuestionContainer from "../QuestionContainer"
 import Button from "@material-ui/core/Button"
@@ -25,24 +26,27 @@ export default ({
   question: RadioGroupQuestion,
   onChangeAnswer: Function
 }) => {
-  const [answer, changeAnswer] = useState(question.defaultAnswer || undefined)
+  const [{ answer, error }, changeAnswer] = useQuestionAnswer(
+    question,
+    onChangeAnswer,
+    question.defaultAnswer || undefined
+  )
   const choices = question.choices.map(c =>
     typeof c === "string" ? { text: c, value: c } : c
   )
+
   return (
-    <QuestionContainer question={question} answered={answer !== undefined}>
-      {choices.map(({ value, text }) => {
-        const onChange = () => {
-          changeAnswer(value)
-          onChangeAnswer(value)
-        }
-        return (
-          <RadioItem onClick={onChange} key={value}>
-            <Radio tabIndex={-1} checked={answer === value} />
-            <QuestionText>{text}</QuestionText>
-          </RadioItem>
-        )
-      })}
+    <QuestionContainer
+      question={question}
+      answered={answer !== undefined}
+      error={error}
+    >
+      {choices.map(({ value, text }) => (
+        <RadioItem onClick={() => changeAnswer(value)} key={value}>
+          <Radio tabIndex={-1} checked={answer === value} />
+          <QuestionText>{text}</QuestionText>
+        </RadioItem>
+      ))}
     </QuestionContainer>
   )
 }

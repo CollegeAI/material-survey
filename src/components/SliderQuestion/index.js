@@ -8,6 +8,7 @@ import styled from "styled-components"
 import QuestionText from "../QuestionText"
 import TextField from "@material-ui/core/TextField"
 import Slider from "@material-ui/lab/Slider"
+import useQuestionAnswer from "../../hooks/use-question-answer"
 
 const Row = styled.div`
   display: flex;
@@ -35,13 +36,18 @@ export default ({
   question: SliderQuestion,
   onChangeAnswer: Function
 }) => {
-  const [answer, changeAnswer] = useState(question.defaultAnswer || undefined)
+  const [{ answer, error }, changeAnswer] = useQuestionAnswer(
+    question,
+    onChangeAnswer,
+    question.defaultAnswer || undefined
+  )
   const [textFieldText, changeTextFieldText] = useState(answer)
   return (
     <QuestionContainer
       question={question}
       answered={answer !== undefined}
       fadedTitle={question.unit ? `(${question.unit})` : undefined}
+      error={error}
     >
       <Row>
         <TextField
@@ -59,7 +65,6 @@ export default ({
             const tfn = parseFloat(tft)
             if (!isNaN(tfn) && tfn <= question.max && tfn >= question.min) {
               changeAnswer(tfn)
-              onChangeAnswer(tfn)
             }
           }}
         />
@@ -68,7 +73,6 @@ export default ({
             onChange={(e, value) => {
               changeAnswer(value)
               changeTextFieldText(value.toFixed(2))
-              onChangeAnswer(value)
             }}
             style={{ opacity: answer === undefined ? 0.5 : 1 }}
             value={

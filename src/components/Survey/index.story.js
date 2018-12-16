@@ -18,15 +18,31 @@ storiesOf("Survey", module)
       onFinish={action("onFinish")}
     />
   ))
-  .add("WorkAround Interview", () => (
+  .add("Override Default Answers", () => (
     <Survey
-      form={workaroundInterview}
+      form={allQuestionsSurvey}
       autocompleteRequest={zipCodeAutocompleteRequest}
-      onFileUpload={() => Promise.resolve("http://path.to/file")}
       onFinish={action("onFinish")}
+      defaultAnswers={{
+        "brown-bear": ["Brown Bear", "Grizzly Bear"],
+        "dropdown-feeling": "It's great!",
+        "like-boolean": true,
+        "mouse-size": 4,
+        "global-warming": 3,
+        "preferred-us-region": "far-west",
+        "sauce-ranking": {
+          Alfredo: 0,
+          Ketchup: 2,
+          Marinara: 3,
+          Ranch: 1
+        },
+        "strongest-bear": "Grizzly Bear",
+        "text-feeling": "Good",
+        "zip-code": "14420"
+      }}
     />
   ))
-  .add("WorkAround Interview with Preloaded Answers", () => (
+  .add("WorkAround Interview", () => (
     <Survey
       form={workaroundInterview}
       autocompleteRequest={zipCodeAutocompleteRequest}

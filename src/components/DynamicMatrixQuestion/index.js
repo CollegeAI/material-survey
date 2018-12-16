@@ -72,7 +72,7 @@ export default ({
   ): [{ answer: Array<{ [string]: any }>, error: string }, Function])
   const answerWithBlank = answer.concat([{}])
   return (
-    <QuestionContainer question={question} answered={answer !== undefined}>
+    <QuestionContainer question={question} answered={answer.length > 0}>
       <Row>
         {question.columns.map(({ title, name }) => (
           <HeaderCol key={name}>{title || name}</HeaderCol>

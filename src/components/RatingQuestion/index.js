@@ -1,11 +1,12 @@
 // @flow
 
 import type { RatingQuestion } from "../../material-survey-format.js.flow"
-import React, { useState } from "react"
+import React from "react"
 import QuestionContainer from "../QuestionContainer"
 import styled from "styled-components"
 import QuestionText from "../QuestionText"
 import Slider from "@material-ui/lab/Slider"
+import useQuestionAnswer from "../../hooks/use-question-answer"
 
 const Row = styled.div`
   display: flex;
@@ -20,7 +21,12 @@ export default ({
   question: RatingQuestion,
   onChangeAnswer: Function
 }) => {
-  const [answer, changeAnswer] = useState(question.defaultAnswer || undefined)
+  const [{ answer, error }, changeAnswer] = useQuestionAnswer(
+    question,
+    onChangeAnswer,
+    question.defaultAnswer || undefined
+  )
+
   const {
     rateValues,
     rankings,
@@ -30,11 +36,13 @@ export default ({
   } = question
 
   return (
-    <QuestionContainer question={question} answered={answer !== undefined}>
+    <QuestionContainer
+      question={question}
+      answered={answer !== undefined}
+      error={error}
+    >
       <Slider
-        onChange={(e, value) => {
-          changeAnswer(value)
-        }}
+        onChange={(e, value) => changeAnswer(value)}
         style={{ opacity: answer === undefined ? 0.5 : 1, marginTop: 10 }}
         value={
           answer === undefined

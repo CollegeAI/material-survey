@@ -38,6 +38,7 @@ export default ({
 
   return choiceList.length > 10 ? (
     <ReactSelect
+      placeholder={answer}
       className="material-survey-selection"
       styles={{
         menu: provided => ({

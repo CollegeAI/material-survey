@@ -20,6 +20,7 @@ import APIAutocompleteQuestion from "../APIAutocompleteQuestion"
 import DynamicMatrixQuestion from "../DynamicMatrixQuestion"
 import FileQuestion from "../FileQuestion"
 import styled from "styled-components"
+import isEqual from "lodash/isEqual"
 
 export type Props = {
   question: SurveyQuestion,
@@ -32,9 +33,9 @@ const Red = styled.div`
   color: red;
 `
 
-class SurveyQuestionComponent extends Component {
+class SurveyQuestionComponent extends Component<*, *> {
   shouldComponentUpdate = (nextProps: Props) => {
-    return nextProps.question !== this.props.question
+    return !isEqual(nextProps.question, this.props.question)
   }
   onChangeAnswer = (...args: any) => this.props.onChangeAnswer(...args)
   render = () => {

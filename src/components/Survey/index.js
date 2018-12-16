@@ -1,6 +1,6 @@
 // @flow
 
-import React, { useState } from "react"
+import React, { useState, useRef } from "react"
 import type {
   SurveyMaterialFormat,
   AutocompleteRequestFunction
@@ -12,6 +12,9 @@ import NextIcon from "@material-ui/icons/KeyboardArrowRight"
 import CompleteIcon from "@material-ui/icons/Check"
 import styled from "styled-components"
 import evaluateExpression from "surveyjs-expression-eval"
+import scrollToElement from "scroll-to-element"
+import validateQuestion from "../../hooks/use-question-answer/validators.js"
+import QuestionContext from "../QuestionContext"
 
 const SurveyActions = styled.div`
   display: flex;
@@ -22,17 +25,27 @@ export default function Survey({
   form,
   onFileUpload,
   onFinish,
-  autocompleteRequest
+  autocompleteRequest,
+  defaultAnswers = {}
 }: {
   form: SurveyMaterialFormat,
   autocompleteRequest?: AutocompleteRequestFunction,
   onFileUpload?: File => Promise<string>,
-  onFinish: Object => any
+  onFinish: Object => any,
+  defaultAnswers?: Object
 }) {
   const [currentPage, setCurrentPage] = useState(0)
-  const [answerMap, setAnswerMap] = useState({})
+  const [answerMap, setAnswerMap] = useState(defaultAnswers)
+  const [failingQuestions, changeFailingQuestions] = useState([])
+  const surveyDiv = useRef(null)
 
   const questions = form.questions || form.pages[currentPage].elements
+  const visibleQuestions = questions.filter(q =>
+    q.visibleIf === undefined
+      ? true
+      : evaluateExpression(q.visibleIf, answerMap)
+  )
+  console.log({ visibleQuestions, failingQuestions })
 
   let firstPage, lastPage
   if (form.questions) {
@@ -44,21 +57,58 @@ export default function Survey({
     lastPage = currentPage === form.pages.length - 1
   }
 
+  const validatePage = () => {
+    const fqs: Array<{
+      question: Object,
+      text: string
+    }> = []
+    for (const question of visibleQuestions) {
+      if (question.isRequired && answerMap[question.name] === undefined) {
+        fqs.push({
+          question,
+          text: "This question is required!"
+        })
+        continue
+      }
+      if (answerMap[question.name] !== undefined) {
+        const failingValidator = (question.validators || []).find(
+          v => !validateQuestion(v, answerMap[question.name], answerMap)
+        )
+        if (failingValidator) {
+          fqs.push({
+            question,
+            text: failingValidator.text
+          })
+          continue
+        }
+      }
+    }
+
+    changeFailingQuestions(fqs)
+
+    if (fqs.length > 0) {
+      return fqs[0]
+    } else {
+      return {}
+    }
+  }
+
   // TODO complex survey validator logic
   const pageComplete = true
 
   return (
-    <div>
-      {questions
-        .filter(q =>
-          q.visibleIf === undefined
-            ? true
-            : evaluateExpression(q.visibleIf, answerMap)
-        )
-        .map(q => (
+    <div ref={surveyDiv}>
+      {visibleQuestions.map(q => (
+        <QuestionContext.Provider
+          key={q.name}
+          value={{
+            error: (
+              failingQuestions.find(fq => fq.question.name === q.name) || {}
+            ).text
+          }}
+        >
           <SurveyQuestion
-            key={q.name}
-            question={q}
+            question={{ ...q, defaultAnswer: answerMap[q.name] }}
             onFileUpload={onFileUpload}
             onChangeAnswer={(newAnswer: any) => {
               setAnswerMap({
@@ -68,7 +118,8 @@ export default function Survey({
             }}
             autocompleteRequest={autocompleteRequest}
           />
-        ))}
+        </QuestionContext.Provider>
+      ))}
       <SurveyActions>
         <Button
           disabled={firstPage}
@@ -77,12 +128,30 @@ export default function Survey({
           <BackIcon />
           Prev
         </Button>
-        <Button onClick={() => onFinish(answerMap)} disabled={!lastPage}>
+        <Button
+          onClick={() => {
+            const { question: failingQuestion, text } = validatePage()
+            if (failingQuestion) {
+              scrollToElement(`#${failingQuestion.name}`)
+            } else {
+              onFinish(answerMap)
+            }
+          }}
+          disabled={!lastPage}
+        >
           <CompleteIcon style={{ marginRight: 4 }} />
           Complete
         </Button>
         <Button
-          onClick={() => setCurrentPage(currentPage + 1)}
+          onClick={() => {
+            const { question: failingQuestion, text } = validatePage()
+            if (failingQuestion) {
+              scrollToElement(`#${failingQuestion.name}`)
+            } else {
+              scrollToElement(surveyDiv.current)
+              setCurrentPage(currentPage + 1)
+            }
+          }}
           disabled={!pageComplete || lastPage}
         >
           Next

@@ -7,7 +7,8 @@ export default ({
     {
       type: "text",
       title: "How do you feel?",
-      name: "text-feeling"
+      name: "text-feeling",
+      isRequired: true
     },
     {
       type: "dropdown",
