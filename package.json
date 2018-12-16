@@ -46,7 +46,6 @@
     "react": "alpha",
     "react-dropzone": "^8.0.1",
     "react-select": "^2.1.2",
-    "scroll-to-element": "^2.0.2",
     "styled-components": "^4.1.2",
     "surveyjs-expression-eval": "^1.0.1"
   }

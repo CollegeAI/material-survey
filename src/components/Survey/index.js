@@ -12,9 +12,16 @@ import NextIcon from "@material-ui/icons/KeyboardArrowRight"
 import CompleteIcon from "@material-ui/icons/Check"
 import styled from "styled-components"
 import evaluateExpression from "surveyjs-expression-eval"
-import scrollToElement from "scroll-to-element"
 import validateQuestion from "../../hooks/use-question-answer/validators.js"
 import QuestionContext from "../QuestionContext"
+
+const scrollToElement = idOrElm => {
+  const elm =
+    typeof idOrElm === "string" ? document.getElementById(idOrElm) : idOrElm
+  if (elm) {
+    elm.scrollIntoView({ block: "start", behavior: "smooth" })
+  }
+}
 
 const SurveyActions = styled.div`
   display: flex;
@@ -131,7 +138,7 @@ export default function Survey({
           onClick={() => {
             const { question: failingQuestion, text } = validatePage()
             if (failingQuestion) {
-              scrollToElement(`#${failingQuestion.name}`)
+              scrollToElement(failingQuestion.name)
             } else {
               onFinish(answerMap)
             }
@@ -145,7 +152,7 @@ export default function Survey({
           onClick={() => {
             const { question: failingQuestion, text } = validatePage()
             if (failingQuestion) {
-              scrollToElement(`#${failingQuestion.name}`)
+              scrollToElement(failingQuestion.name)
             } else {
               scrollToElement(surveyDiv.current)
               setCurrentPage(currentPage + 1)
