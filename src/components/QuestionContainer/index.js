@@ -47,7 +47,6 @@ export default ({
       ) : (
         contextError
       )
-      console.log({ error })
       return (
         <Card id={question.name} style={{ position: "relative", margin: 20 }}>
           <CardHeader

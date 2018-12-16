@@ -45,7 +45,6 @@ export default function Survey({
       ? true
       : evaluateExpression(q.visibleIf, answerMap)
   )
-  console.log({ visibleQuestions, failingQuestions })
 
   let firstPage, lastPage
   if (form.questions) {
