@@ -990,10 +990,6 @@
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
 
-"@seveibar/k-choice-sort@^1.0.8":
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/@seveibar/k-choice-sort/-/k-choice-sort-1.0.8.tgz#c8dc0a02413430a0f43ba6186c49a8089f6ca1e5"
-
 "@sindresorhus/is@^0.7.0":
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.7.0.tgz#9a06f4f137ee84d7df0460c1fdb1135ffa6c50fd"
@@ -2327,7 +2323,7 @@ browserify-zlib@^0.2.0:
   dependencies:
     pako "~1.0.5"
 
-browserslist@4.1.1:
+browserslist@4.1.1, browserslist@^4.1.0:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.1.1.tgz#328eb4ff1215b12df6589e9ab82f8adaa4fc8cd6"
   dependencies:
@@ -2335,7 +2331,7 @@ browserslist@4.1.1:
     electron-to-chromium "^1.3.62"
     node-releases "^1.0.0-alpha.11"
 
-browserslist@^4.1.0, browserslist@^4.3.4, browserslist@^4.3.5:
+browserslist@^4.3.4, browserslist@^4.3.5:
   version "4.3.6"
   resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.3.6.tgz#0f9d9081afc66b36f477c6bdf3813f784f42396a"
   dependencies:
@@ -4646,6 +4642,10 @@ jss@^9.3.3:
     is-in-browser "^1.1.3"
     symbol-observable "^1.1.0"
     warning "^3.0.0"
+
+k-choice-sort@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/k-choice-sort/-/k-choice-sort-1.0.9.tgz#42bdc4ba14343839ec7d8f5d9f5ffa0b3f812b34"
 
 keycode@^2.1.9, keycode@^2.2.0:
   version "2.2.0"

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react"
 import type { ChoiceRankerQuestion } from "../../material-survey-format.js.flow"
-import Sorter from "@seveibar/k-choice-sort"
+import Sorter from "k-choice-sort"
 import QuestionContainer from "../QuestionContainer"
 import Button from "@material-ui/core/Button"
 import styled from "styled-components"

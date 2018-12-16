@@ -41,7 +41,7 @@
     "zipcodes": "^8.0.0"
   },
   "dependencies": {
-    "@seveibar/k-choice-sort": "^1.0.8",
+    "k-choice-sort": "^1.0.9",
     "lodash": "^4.17.11",
     "react": "alpha",
     "react-dropzone": "^8.0.1",
