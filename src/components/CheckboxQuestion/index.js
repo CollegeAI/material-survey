@@ -8,6 +8,7 @@ import Button from "@material-ui/core/Button"
 import styled from "styled-components"
 import QuestionText from "../QuestionText"
 import useQuestionAnswer from "../../hooks/use-question-answer"
+import TextField from "@material-ui/core/TextField"
 
 const CheckboxItem = styled(Button)`
   && {
@@ -43,10 +44,10 @@ export default function CheckboxQuestion({
         )
         .map(({ value, text }) => {
           const onChange = () => {
-            const newAnswer = (answer.includes(value)
+            let newAnswer = answer.includes(value)
               ? answer.filter(a => a !== value)
               : answer.concat([value])
-            ).sort()
+            if (!question.hasOther) newAnswer = newAnswer.sort()
             changeAnswer(newAnswer)
           }
           return (
@@ -56,6 +57,41 @@ export default function CheckboxQuestion({
             </CheckboxItem>
           )
         })}
+      {question.hasOther &&
+        answer
+          .concat(null)
+          .filter(
+            a => !question.choices.some(c => c === a || (c || {}).value === a)
+          )
+          .map((otherValue, i) => (
+            <CheckboxItem>
+              <Checkbox
+                tabIndex={-1}
+                onClick={() => {
+                  if (otherValue !== null) {
+                    changeAnswer(answer.filter(a => a !== otherValue))
+                  } else {
+                    changeAnswer([
+                      ...answer.slice(0, i),
+                      "",
+                      ...answer.slice(i + 1)
+                    ])
+                  }
+                }}
+                checked={otherValue !== null}
+              />
+              <TextField
+                value={otherValue || ""}
+                onChange={e => {
+                  changeAnswer([
+                    ...answer.slice(0, i),
+                    e.target.value,
+                    ...answer.slice(i + 1)
+                  ])
+                }}
+              />
+            </CheckboxItem>
+          ))}
     </QuestionContainer>
   )
 }

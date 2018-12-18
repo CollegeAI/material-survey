@@ -37,7 +37,7 @@ export default ({
   fadedTitle?: string
 }) => (
   <QuestionContext.Consumer>
-    {({ error: contextError }) => {
+    {({ error: contextError } = {}) => {
       const error = valueError ? (
         <div>
           {valueError}
