@@ -6908,9 +6908,9 @@ supports-color@^5.3.0, supports-color@^5.4.0, supports-color@^5.5.0:
   dependencies:
     has-flag "^3.0.0"
 
-surveyjs-expression-eval@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/surveyjs-expression-eval/-/surveyjs-expression-eval-1.0.1.tgz#1ab1ace82bd79af9ac661e9b79b8ea57ea9f8199"
+surveyjs-expression-eval@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/surveyjs-expression-eval/-/surveyjs-expression-eval-1.0.2.tgz#bffb2822de103e4e618f710896d7ac1d8a444c7b"
   dependencies:
     jsep "^0.3.4"
 
