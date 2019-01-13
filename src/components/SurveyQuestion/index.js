@@ -170,7 +170,13 @@ class SurveyQuestionComponent extends Component<*, *> {
         )
       }
       default: {
-        throw new Error(`Invalid Question Type: "${question.type}"`)
+        throw new Error(
+          `Invalid Question Type: "${question.type}" in "${JSON.stringify(
+            question,
+            null,
+            "  "
+          )}"`
+        )
       }
     }
   }
