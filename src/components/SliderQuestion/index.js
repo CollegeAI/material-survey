@@ -58,7 +58,7 @@ export default ({
             width: 80
           }}
           inputProps={{ style: { textAlign: "center" } }}
-          value={textFieldText}
+          value={textFieldText || ""}
           onChange={e => {
             const tft = e.target.value
             changeTextFieldText(tft)

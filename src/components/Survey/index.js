@@ -1,6 +1,6 @@
 // @flow
 
-import React, { useState, useRef } from "react"
+import React, { useState, useRef, useMemo } from "react"
 import type {
   SurveyMaterialFormat,
   AutocompleteRequestFunction
@@ -114,7 +114,7 @@ export default function Survey({
           }}
         >
           <SurveyQuestion
-            question={{ ...q, defaultAnswer: answerMap[q.name] }}
+            question={{ ...q, defaultAnswer: defaultAnswers[q.name] }}
             onFileUpload={onFileUpload}
             onChangeAnswer={(newAnswer: any) => {
               setAnswerMap({
