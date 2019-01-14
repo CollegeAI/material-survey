@@ -54,7 +54,7 @@ const yesNo = [
 export default {
   questions: [
     {
-      id: "major-category",
+      name: "major-category",
       title: "What areas are you interested in?",
       type: "checkbox",
       choices: [
@@ -133,19 +133,19 @@ export default {
       ]
     },
     {
-      id: "major-importance",
+      name: "major-importance",
       title: "How important is your major to you?",
       type: "radiogroup",
       choices: importanceChoices
     },
     {
-      id: "play-sports",
+      name: "play-sports",
       title: "Will you play sports in college?",
       type: "radiogroup",
       choices: yesNoMaybe
     },
     {
-      id: "sport-level",
+      name: "sport-level",
       type: "checkbox",
       title: "What level are you interested in playing at?",
       visibleIf: "{var('play-sports')}='yes'",
@@ -177,7 +177,7 @@ export default {
       ]
     },
     {
-      id: "post-college",
+      name: "post-college",
       title: "What do you plan on doing after college?",
       type: "checkbox",
       choices: [
@@ -204,13 +204,13 @@ export default {
       ]
     },
     {
-      id: "high-school-location",
+      name: "high-school-location",
       title: "If US based, what is your zip code?",
       type: "api-autocomplete",
       requestUrl: "zip-code"
     },
     {
-      id: "high-school-unweighted-gpa-value",
+      name: "high-school-unweighted-gpa-value",
       title: "What is your unweighted GPA?",
       type: "text",
       validators: [
@@ -225,7 +225,7 @@ export default {
       required: true
     },
     {
-      id: "high-school-unweighted-gpa-total",
+      name: "high-school-unweighted-gpa-total",
       title: "What is the max unweighted GPA at your school?",
       type: "text",
       validators: [
@@ -240,7 +240,7 @@ export default {
       required: true
     },
     {
-      id: "high-school-weighted-gpa",
+      name: "high-school-weighted-gpa",
       title: "What is your weighted grade point average?",
       type: "text",
       validators: [
@@ -255,7 +255,7 @@ export default {
       required: true
     },
     {
-      id: "class-rank",
+      name: "class-rank",
       title: "What is your class rank?",
       type: "radiogroup",
       choices: [
@@ -290,7 +290,7 @@ export default {
       ]
     },
     {
-      id: "class-size",
+      name: "class-size",
       title: "How many students are in your graduating class?",
       type: "slider",
       min: 0,
@@ -298,7 +298,7 @@ export default {
       step: 1
     },
     {
-      id: "tests-taken",
+      name: "tests-taken",
       title: "What tests have you taken?",
       type: "checkbox",
       required: true,
@@ -338,7 +338,7 @@ export default {
       ]
     },
     {
-      id: "sat-subject-tests",
+      name: "sat-subject-tests",
       title: "What SAT subject tests have you taken?",
       type: "matrixdynamic",
       choices: [
@@ -437,7 +437,7 @@ export default {
       visibleIf: "{var('tests-taken')} contains 'sat-subject'"
     },
     {
-      id: "ap-tests",
+      name: "ap-tests",
       title: "What AP tests have you taken?",
       type: "checkbox",
       choices: [
@@ -612,7 +612,7 @@ export default {
       visibleIf: "{var('tests-taken')} contains 'ap-test'"
     },
     {
-      id: "favorite-class",
+      name: "favorite-class",
       title: "What are your favorite classes?",
       type: "checkbox",
       choices: [
@@ -745,17 +745,17 @@ export default {
           text: "Music Theory"
         },
         {
-          id: "computer-science",
+          name: "computer-science",
           text: "Computer Science"
         },
         {
-          id: "other",
+          name: "other",
           text: "Other"
         }
       ]
     },
     {
-      id: "extracurricular-activities",
+      name: "extracurricular-activities",
       title: "What extracurricular activities do you participate in?",
       type: "checkbox",
       choices: [
@@ -786,7 +786,7 @@ export default {
       ]
     },
     {
-      id: "music-group",
+      name: "music-group",
       title: "What music group are you involved with?",
       type: "checkbox",
       visibleIf: "{var('extracurricular-activities')} contains 'music'",
@@ -814,7 +814,7 @@ export default {
       ]
     },
     {
-      id: "what-sports",
+      name: "what-sports",
       title: "What sports?",
       visibleIf: "{var('extracurricular-activities')} contains 'sports'",
       type: "checkbox",
@@ -1018,7 +1018,7 @@ export default {
       ]
     },
     {
-      id: "school-clubs",
+      name: "school-clubs",
       title: "What clubs are you involved with?",
       visibleIf: "{var('extracurricular-activities')} contains 'clubs'",
       type: "checkbox",
@@ -1154,7 +1154,7 @@ export default {
       ]
     },
     {
-      id: "fast-filters",
+      name: "fast-filters",
       title: "Check any that apply.",
       type: "checkbox",
       choices: [
@@ -1173,7 +1173,7 @@ export default {
       ]
     },
     {
-      id: "faith",
+      name: "faith",
       title: "Which faith are you looking for in a college?",
       visibleIf: "{var('fast-filters')} contains 'faith'",
       type: "checkbox",
@@ -1217,7 +1217,7 @@ export default {
       ]
     },
     {
-      id: "study-amount",
+      name: "study-amount",
       title: "How much do you study?",
       type: "radiogroup",
       choices: [
@@ -1240,32 +1240,32 @@ export default {
       ]
     },
     {
-      id: "challenging-offerings",
+      name: "challenging-offerings",
       title: "Would you take challenging classes for fun?",
       type: "radiogroup",
       choices: yesNoMaybe
     },
     {
-      id: "prefer-diversity",
+      name: "prefer-diversity",
       title: "How important is ethnic diversity?",
       type: "radiogroup",
       choices: importanceChoices
       // importance	false		"
     },
     {
-      id: "close-to-home",
+      name: "close-to-home",
       title: "How important is being close to home?",
       type: "radiogroup",
       choices: importanceChoices
     },
     {
-      id: "preferred-region",
+      name: "preferred-region",
       title:
         "Do you want to go to anywhere specific in the US? If so, select the regions.",
       type: "multiple-us-region"
     },
     {
-      id: "preferred-region-importance",
+      name: "preferred-region-importance",
       title:
         "How important is it that you go to college in the regions you selected?",
       visibleIf: "{var('preferred-region')} notempty",
@@ -1273,13 +1273,13 @@ export default {
       choices: importanceChoices
     },
     {
-      id: "care-about-weather",
+      name: "care-about-weather",
       title: "How important is weather?",
       type: "radiogroup",
       choices: importanceChoices
     },
     {
-      id: "living-area-type",
+      name: "living-area-type",
       title: "What type of area do you want to live in?",
       type: "checkbox",
       choices: [
@@ -1298,7 +1298,7 @@ export default {
       ]
     },
     {
-      id: "weather",
+      name: "weather",
       title: "What types of weather do you prefer? (if any)	checkbox	weather	true		",
       type: "checkbox",
       choices: [
@@ -1329,43 +1329,43 @@ export default {
       ]
     },
     {
-      id: "hot-guy-importance",
+      name: "hot-guy-importance",
       title: "How important is it that you date boys?",
       type: "radiogroup",
       choices: importanceChoices
     },
     {
-      id: "hot-girl-importance",
+      name: "hot-girl-importance",
       title: "How important is it that you date girls?",
       type: "radiogroup",
       choices: importanceChoices
     },
     {
-      id: "gender-ratio-importance",
+      name: "gender-ratio-importance",
       title: "How important is a balanced gender ratio?",
       type: "radiogroup",
       choices: importanceChoices
     },
     {
-      id: "parents-college",
+      name: "parents-college",
       title: "Did one of your parent/guardians go to college?",
       type: "radiogroup",
       choices: yesNo
     },
     {
-      id: "parent-colleges",
+      name: "parent-colleges",
       title: "Which colleges did you parent/guardian(s) go to?",
       type: "api-autocomplete",
       requestUrl: "colleges"
     },
     {
-      id: "high-school-name",
+      name: "high-school-name",
       title: "What high school did you attend?",
       type: "api-autocomplete",
       requestUrl: "high-school"
     },
     {
-      id: "favorite-movie",
+      name: "favorite-movie",
       title: "What's your favorite type of movie?",
       type: "checkbox",
       choices: [
@@ -1400,74 +1400,74 @@ export default {
       ]
     },
     {
-      id: "play-sports-importance",
+      name: "play-sports-importance",
       title: "How important is playing sports?",
       type: "radiogroup",
       choices: importanceChoices
     },
     {
-      id: "watch-sports-importance",
+      name: "watch-sports-importance",
       title: "How important is watching sports?",
       type: "radiogroup",
       choices: importanceChoices
     },
     {
-      id: "safety-importance",
+      name: "safety-importance",
       title: "How important is safety?",
       type: "radiogroup",
       choices: importanceChoices
     },
     {
-      id: "college-professors",
+      name: "college-professors",
       title: "How important is it that you have great professors?",
       type: "radiogroup",
       choices: importanceChoices
     },
     {
-      id: "importance-greek-life",
+      name: "importance-greek-life",
       title: "How important is greek life?",
       type: "radiogroup",
       choices: importanceChoices
     },
     {
-      id: "importance-highly-ranked",
+      name: "importance-highly-ranked",
       title: "How important is the school reputation?",
       type: "radiogroup",
       choices: importanceChoices
     },
     {
-      id: "applied-status",
+      name: "applied-status",
       title: "Did you apply to colleges?",
       type: "radiogroup",
       choices: yesNo
     },
     // TODO
     // "college-status": {
-    //   id: "college-status",
+    //   name: "college-status",
     //   title: "What colleges (if any) have you already applied to?"
     //    	extended-checkbox	college-list	false	applied-status:yes	college-status
     // },
     // TODO
     // "college-interested": {
-    //   id: "college-interested",
+    //   name: "college-interested",
     //   title: "What colleges are you interested in (if any)?"
     //   // 	extended-checkbox	college-list	false	applied-status:no	college-desire-types
     //   // TODO
     // },
     {
-      id: "importance-low-cost",
+      name: "importance-low-cost",
       title: "How important is low cost?",
       type: "radiogroup",
       choices: importanceChoices
     },
     {
-      id: "prefer-public",
+      name: "prefer-public",
       title: "Would you prefer a public school?",
       type: "radiogroup",
       choices: importanceChoices
     },
     {
-      id: "school-size",
+      name: "school-size",
       title: "What size school would you prefer?",
       type: "checkbox",
       choices: [
@@ -1490,7 +1490,7 @@ export default {
       ]
     },
     {
-      id: "household-income",
+      name: "household-income",
       title: "What is your household income?",
       type: "radiogroup",
       choices: [
@@ -1521,19 +1521,19 @@ export default {
       ]
     },
     {
-      id: "dorm-quality",
+      name: "dorm-quality",
       title: "How important is the dorm quality?",
       type: "radiogroup",
       choices: importanceChoices
     },
     {
-      id: "food-quality",
+      name: "food-quality",
       title: "How important is the food quality?",
       type: "radiogroup",
       choices: importanceChoices
     },
     {
-      id: "party-scene",
+      name: "party-scene",
       title: "How important is the party scene?",
       type: "radiogroup",
       choices: importanceChoices
