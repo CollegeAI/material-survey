@@ -38,6 +38,7 @@
     "raw-loader": "^1.0.0",
     "react-hot-loader": "next",
     "react-markdown": "^4.0.4",
+    "storybook-addon-prettier-source": "^2.1.2",
     "zipcodes": "^8.0.0"
   },
   "dependencies": {

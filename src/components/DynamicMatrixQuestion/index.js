@@ -1,6 +1,6 @@
 // @flow
 
-import type { DynamicMatrixQuestion } from "../../material-survey-format.js.flow"
+import type { DynamicMatrixQuestion as DynamicMatrixQuestionType } from "../../material-survey-format.js.flow"
 import React, { useState } from "react"
 import Radio from "@material-ui/core/Radio"
 import Button from "@material-ui/core/Button"
@@ -58,13 +58,13 @@ const CheckboxButton = styled(Button)`
   }
 `
 
-export default ({
+export default function DynamicMatrixQuestion({
   question,
   onChangeAnswer
 }: {
-  question: DynamicMatrixQuestion,
+  question: DynamicMatrixQuestionType,
   onChangeAnswer: Function
-}) => {
+}) {
   const [{ answer, error }, changeAnswer] = (useQuestionAnswer(
     question,
     onChangeAnswer,
@@ -78,7 +78,7 @@ export default ({
           <HeaderCol key={name}>{title || name}</HeaderCol>
         ))}
         <LastCol>
-          <Button style={{ opacity: 0 }} disabled>
+          <Button tabIndex={-1} style={{ opacity: 0 }} disabled>
             <Delete />
           </Button>
         </LastCol>
@@ -146,6 +146,7 @@ export default ({
           )}
           <LastCol>
             <Button
+              tabIndex={-1}
               disabled={i === answerWithBlank.length - 1}
               onClick={() =>
                 changeAnswer([...answer.slice(0, i), ...answer.slice(i + 1)])

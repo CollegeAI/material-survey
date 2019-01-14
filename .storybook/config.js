@@ -1,8 +1,20 @@
 import React from "react"
 import { configure, addDecorator } from "@storybook/react"
 import { withInfo } from "@storybook/addon-info"
+import { withPrettierSource } from "storybook-addon-prettier-source"
 
-addDecorator(withInfo({ inline: true, header: false }))
+addDecorator(
+  // withInfo({
+  //   inline: true,
+  //   source: true,
+  //   header: false,
+  //   maxPropsIntoLine: 20,
+  //   maxPropsObjectKeys: 20,
+  //   maxPropArrayLength: 20,
+  //   maxPropStringLength: 500
+  // })
+  (story, context) => withPrettierSource()(story)(context)
+)
 addDecorator(storyFn => (
   <div
     style={{

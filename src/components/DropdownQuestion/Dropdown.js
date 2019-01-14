@@ -36,58 +36,69 @@ export default ({
     {}
   )
 
-  return choiceList.length > 10 ? (
-    <ReactSelect
-      placeholder={answer}
-      className="material-survey-selection"
-      styles={{
-        menu: provided => ({
-          ...provided,
-          fontFamily: "Roboto, sans-serif"
-        }),
-        menuPortal: provided => ({ ...provided, zIndex: 10000 }),
-        container: provided => ({
-          ...provided,
-          fontFamily: "Roboto, sans-serif"
-        })
-      }}
-      isMulti={multiple}
-      menuPortalTarget={document.body}
-      options={choiceList.map(c => ({ value: c.value, label: c.text }))}
-      onChange={({ value }) => changeAnswer(value)}
-    />
-  ) : (
-    <Select
-      multiple={multiple}
-      value={answer}
-      style={{ display: "flex" }}
-      onChange={e => changeAnswer(e.target.value)}
-      renderValue={
-        !multiple
-          ? selected => (
-              <SelectedValueContainer style={{ padding: 10 }}>
-                {choiceMap[answer]}
-              </SelectedValueContainer>
-            )
-          : selected => (
-              <SelectedValueContainer>
-                {selected.map(value => (
-                  <Chip
-                    style={{ marginRight: 8 }}
-                    key={value}
-                    label={choiceMap[value]}
-                  />
-                ))}
-              </SelectedValueContainer>
-            )
-      }
-    >
-      {choiceList.map(choice => (
-        <MenuItem key={choice.value} value={choice.value}>
-          {multiple && <Checkbox checked={answer.includes(choice.value)} />}
-          {choice.text}
-        </MenuItem>
-      ))}
-    </Select>
-  )
+  if (choiceList.length > 10) {
+    const currentChoice = choiceList.find(c => c.value === answer)
+
+    const reactSelectChoice = currentChoice
+      ? { value: currentChoice.value, label: currentChoice.text }
+      : null
+
+    return (
+      <ReactSelect
+        placeholder={answer}
+        value={reactSelectChoice}
+        className="material-survey-selection"
+        styles={{
+          menu: provided => ({
+            ...provided,
+            fontFamily: "Roboto, sans-serif"
+          }),
+          menuPortal: provided => ({ ...provided, zIndex: 10000 }),
+          container: provided => ({
+            ...provided,
+            fontFamily: "Roboto, sans-serif"
+          })
+        }}
+        isMulti={multiple}
+        menuPortalTarget={document.body}
+        options={choiceList.map(c => ({ value: c.value, label: c.text }))}
+        onChange={({ value }) => changeAnswer(value)}
+      />
+    )
+  } else {
+    return (
+      <Select
+        multiple={multiple}
+        value={answer || null}
+        style={{ display: "flex" }}
+        onChange={e => changeAnswer(e.target.value)}
+        renderValue={
+          !multiple
+            ? selected => (
+                <SelectedValueContainer style={{ padding: 10 }}>
+                  {choiceMap[answer]}
+                </SelectedValueContainer>
+              )
+            : selected => (
+                <SelectedValueContainer>
+                  {selected.map(value => (
+                    <Chip
+                      style={{ marginRight: 8 }}
+                      key={value}
+                      label={choiceMap[value]}
+                    />
+                  ))}
+                </SelectedValueContainer>
+              )
+        }
+      >
+        {choiceList.map(choice => (
+          <MenuItem key={choice.value} value={choice.value}>
+            {multiple && <Checkbox checked={answer.includes(choice.value)} />}
+            {choice.text}
+          </MenuItem>
+        ))}
+      </Select>
+    )
+  }
 }

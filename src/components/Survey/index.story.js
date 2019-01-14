@@ -7,7 +7,7 @@ import { action } from "@storybook/addon-actions"
 import { zipCodeAutocompleteRequest } from "../APIAutocompleteQuestion/index.story.js"
 import allQuestionsSurvey from "./all-question-types.sample.js"
 import workaroundInterview from "./workaround-interview.sample.js"
-import collegeaiSurvey from "./collegeai-survey.sample.js"
+import { questionList as collegeaiSurvey } from "./collegeai-survey.sample.js"
 
 import Survey from "./"
 
@@ -53,7 +53,7 @@ storiesOf("Survey", module)
   ))
   .add("CollegeAI Survey", () => (
     <Survey
-      form={collegeaiSurvey}
+      form={{ questions: collegeaiSurvey }}
       autocompleteRequest={zipCodeAutocompleteRequest}
       onFileUpload={() => Promise.resolve("http://path.to/file")}
       onFinish={action("onFinish")}
