@@ -7,6 +7,7 @@ import styled from "styled-components"
 import QuestionText from "../QuestionText"
 import useQuestionAnswer from "../../hooks/use-question-answer"
 import Dropzone from "react-dropzone/dist/es"
+import CircularProgress from "@material-ui/core/CircularProgress"
 
 const Box = styled.div`
   && {
@@ -33,31 +34,50 @@ export default ({
     onChangeAnswer
   )
   const [uploading, changeUploadingState] = useState(false)
+  const [uploadError, changeUploadError] = useState(null)
   return (
-    <QuestionContainer question={question} answered={answer !== undefined}>
-      <Dropzone
-        onDrop={async (file: File) => {
-          const fileUrl = await onFileUpload(file)
-          changeAnswer(fileUrl)
-        }}
-      >
-        {({ getRootProps, getInputProps, isDragActive }) => (
-          <Box {...getRootProps()}>
-            <input {...getInputProps()} />
-            {isDragActive ? (
-              <p>Drop file here...</p>
-            ) : (
-              <div>
-                {answer ? (
-                  <p>File successfully uploaded! Click to replace.</p>
-                ) : (
-                  <p>Drag and drop a file here, or click to select file.</p>
-                )}
-              </div>
-            )}
-          </Box>
-        )}
-      </Dropzone>
+    <QuestionContainer
+      question={question}
+      error={uploadError || error}
+      answered={answer !== undefined}
+    >
+      {!uploading ? (
+        <Dropzone
+          onDrop={async (file: File) => {
+            changeUploadError(null)
+            changeUploadingState(true)
+            try {
+              const fileUrl = await onFileUpload(file)
+              changeAnswer(fileUrl)
+              changeUploadError(null)
+            } catch (e) {
+              changeUploadError(e.toString())
+            }
+            changeUploadingState(false)
+          }}
+        >
+          {({ getRootProps, getInputProps, isDragActive }) => (
+            <Box {...getRootProps()}>
+              <input {...getInputProps()} />
+              {isDragActive ? (
+                <p>Drop file here...</p>
+              ) : (
+                <div>
+                  {answer ? (
+                    <p>File successfully uploaded! Click to replace.</p>
+                  ) : (
+                    <p>Drag and drop a file here, or click to select file.</p>
+                  )}
+                </div>
+              )}
+            </Box>
+          )}
+        </Dropzone>
+      ) : (
+        <div style={{ textAlign: "center" }}>
+          <CircularProgress size={80} />
+        </div>
+      )}
     </QuestionContainer>
   )
 }
