@@ -102,42 +102,50 @@ export default function DynamicMatrixQuestion({
               return (
                 <Col key={name}>
                   {cellType === "dropdown" ? (
-                    <Dropdown
-                      answer={answerWithBlank[i][name]}
-                      choices={choices}
-                      changeAnswer={newAnswer => changeRowAnswer(newAnswer)}
-                    />
+                    <div style={{ paddingRight: 4 }}>
+                      <Dropdown
+                        answer={answerWithBlank[i][name]}
+                        choices={choices}
+                        changeAnswer={newAnswer => changeRowAnswer(newAnswer)}
+                      />
+                    </div>
                   ) : cellType === "autocomplete" ? (
-                    <AsyncSelect
-                      placeholder={rowAnswer}
-                      className="material-survey-selection"
-                      styles={{
-                        menu: provided => ({
-                          ...provided,
-                          fontFamily: "Roboto, sans-serif"
-                        }),
-                        container: provided => ({
-                          ...provided,
-                          fontFamily: "Roboto, sans-serif"
-                        }),
-                        menuPortal: provided => ({ ...provided, zIndex: 10000 })
-                      }}
-                      loadOptions={inputValue => {
-                        if (autocompleteRequest) {
-                          return autocompleteRequest(requestUrl, inputValue)
-                        } else {
-                          return Promise.resolve([
-                            {
-                              value: "",
-                              label:
-                                "No autocompleteRequest callback configured"
-                            }
-                          ])
-                        }
-                      }}
-                      menuPortalTarget={document.body}
-                      onChange={({ value }) => changeRowAnswer(value)}
-                    />
+                    <div style={{ paddingRight: 4 }}>
+                      <AsyncSelect
+                        key={rowAnswer}
+                        placeholder={rowAnswer}
+                        className="material-survey-selection"
+                        styles={{
+                          menu: provided => ({
+                            ...provided,
+                            fontFamily: "Roboto, sans-serif"
+                          }),
+                          container: provided => ({
+                            ...provided,
+                            fontFamily: "Roboto, sans-serif"
+                          }),
+                          menuPortal: provided => ({
+                            ...provided,
+                            zIndex: 10000
+                          })
+                        }}
+                        loadOptions={inputValue => {
+                          if (autocompleteRequest) {
+                            return autocompleteRequest(requestUrl, inputValue)
+                          } else {
+                            return Promise.resolve([
+                              {
+                                value: "",
+                                label:
+                                  "No autocompleteRequest callback configured"
+                              }
+                            ])
+                          }
+                        }}
+                        menuPortalTarget={document.body}
+                        onChange={({ value }) => changeRowAnswer(value)}
+                      />
+                    </div>
                   ) : cellType === "checkbox" ? (
                     <div>
                       {choices.map((choiceRaw, choiceIndex) => {
