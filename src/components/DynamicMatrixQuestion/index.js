@@ -12,6 +12,7 @@ import Dropdown from "../DropdownQuestion/Dropdown"
 import Checkbox from "@material-ui/core/Checkbox"
 import Delete from "@material-ui/icons/Delete"
 import TextField from "@material-ui/core/TextField"
+import AsyncSelect from "react-select/lib/Async"
 
 const Row = styled.div`
   display: flex;
@@ -60,9 +61,11 @@ const CheckboxButton = styled(Button)`
 
 export default function DynamicMatrixQuestion({
   question,
+  autocompleteRequest,
   onChangeAnswer
 }: {
   question: DynamicMatrixQuestionType,
+  autocompleteRequest?: Function,
   onChangeAnswer: Function
 }) {
   const [{ answer, error }, changeAnswer] = (useQuestionAnswer(
@@ -86,7 +89,7 @@ export default function DynamicMatrixQuestion({
       {answerWithBlank.map((a, i) => (
         <Row key={i}>
           {question.columns.map(
-            ({ name, cellType, choices = question.choices }) => {
+            ({ name, cellType, choices = question.choices, requestUrl }) => {
               const changeRowAnswer = newAnswer => {
                 changeAnswer([
                   ...answer.slice(0, i),
@@ -103,6 +106,37 @@ export default function DynamicMatrixQuestion({
                       answer={answerWithBlank[i][name]}
                       choices={choices}
                       changeAnswer={newAnswer => changeRowAnswer(newAnswer)}
+                    />
+                  ) : cellType === "autocomplete" ? (
+                    <AsyncSelect
+                      placeholder={rowAnswer}
+                      className="material-survey-selection"
+                      styles={{
+                        menu: provided => ({
+                          ...provided,
+                          fontFamily: "Roboto, sans-serif"
+                        }),
+                        container: provided => ({
+                          ...provided,
+                          fontFamily: "Roboto, sans-serif"
+                        }),
+                        menuPortal: provided => ({ ...provided, zIndex: 10000 })
+                      }}
+                      loadOptions={inputValue => {
+                        if (autocompleteRequest) {
+                          return autocompleteRequest(requestUrl, inputValue)
+                        } else {
+                          return Promise.resolve([
+                            {
+                              value: "",
+                              label:
+                                "No autocompleteRequest callback configured"
+                            }
+                          ])
+                        }
+                      }}
+                      menuPortalTarget={document.body}
+                      onChange={({ value }) => changeRowAnswer(value)}
                     />
                   ) : cellType === "checkbox" ? (
                     <div>

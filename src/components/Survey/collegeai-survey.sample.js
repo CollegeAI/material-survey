@@ -205,7 +205,7 @@ export const questionList = [
   {
     name: "high-school-location",
     title: "If US based, what is your zip code?",
-    type: "api-autocomplete",
+    type: "autocomplete",
     requestUrl: "zip-code"
   },
   {
@@ -1413,13 +1413,13 @@ export const questionList = [
   {
     name: "parent-colleges",
     title: "Which colleges did you parent/guardian(s) go to?",
-    type: "api-autocomplete",
+    type: "autocomplete",
     requestUrl: "colleges"
   },
   {
     name: "high-school-name",
     title: "What high school did you attend?",
-    type: "api-autocomplete",
+    type: "autocomplete",
     requestUrl: "high-school"
   },
   {

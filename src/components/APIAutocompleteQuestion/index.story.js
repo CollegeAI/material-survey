@@ -15,6 +15,7 @@ export const zipCodeAutocompleteRequest = (
   return new Promise(resolve => {
     setTimeout(() => {
       const info = zipcodes.lookup(value)
+      if (!info) return resolve([])
       resolve([
         {
           value: info.zip,
@@ -30,6 +31,7 @@ storiesOf("APIAutocompleteQuestion", module).add("Basic", () => (
     question={{
       name: "autocomplete-example",
       title: "What is your zip code?",
+      requestUrl: "/zipcodes",
       type: "autocomplete"
     }}
     onChangeAnswer={action("onChangeAnswer")}

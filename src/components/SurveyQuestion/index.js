@@ -132,7 +132,7 @@ class SurveyQuestionComponent extends Component<*, *> {
           />
         )
       }
-      case "api-autocomplete": {
+      case "autocomplete": {
         if (!autocompleteRequest)
           throw new Error(
             "You must supply autocompleteRequest method to use APIAutocompleteQuestions"
@@ -149,6 +149,7 @@ class SurveyQuestionComponent extends Component<*, *> {
         return (
           <DynamicMatrixQuestion
             question={question}
+            autocompleteRequest={autocompleteRequest}
             onChangeAnswer={this.onChangeAnswer}
           />
         )

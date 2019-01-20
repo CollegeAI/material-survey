@@ -5,6 +5,7 @@ import React from "react"
 import { storiesOf } from "@storybook/react"
 import { action } from "@storybook/addon-actions"
 import range from "lodash/range"
+import { zipCodeAutocompleteRequest } from "../APIAutocompleteQuestion/index.story"
 
 import DynamicMatrixQuestion from "./"
 
@@ -74,6 +75,31 @@ storiesOf("DynamicMatrixQuestion", module)
             name: "num2",
             cellType: "dropdown",
             choices: range(100).map(a => a.toString())
+          }
+        ]
+      }}
+    />
+  ))
+  .add("Autocomplete Dropdown", () => (
+    <DynamicMatrixQuestion
+      onChangeAnswer={action("onChangeAnswer")}
+      autocompleteRequest={zipCodeAutocompleteRequest}
+      question={{
+        type: "matrixdynamic",
+        name: "something",
+        title: "Some personal information about where you live...",
+        columns: [
+          {
+            title: "Home Zip Code",
+            name: "home_zipcode",
+            cellType: "autocomplete",
+            requestUrl: "/zipcode"
+          },
+          {
+            title: "Work Zip Code",
+            name: "work_zipcode",
+            cellType: "autocomplete",
+            requestUrl: "/zipcode"
           }
         ]
       }}

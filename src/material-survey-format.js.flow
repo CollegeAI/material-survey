@@ -106,7 +106,7 @@ export type DynamicMatrixQuestion = {
   columns: Array<{
     name: string,
     title?: string,
-    cellType: "dropdown" | "checkbox" | "text",
+    cellType: "dropdown" | "checkbox" | "text" | "autocomplete",
     choices: Array<QuestionChoice>,
     hasOther?: boolean
   }>
@@ -162,7 +162,7 @@ export type CommentQuestion = {
 
 export type APIAutocompleteQuestion = {
   ...BaseQuestion,
-  type: "api-autocomplete",
+  type: "autocomplete",
   requestUrl: string
 }
 

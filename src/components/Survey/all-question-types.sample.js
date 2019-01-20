@@ -62,7 +62,7 @@ export default ({
       name: "preferred-us-region"
     },
     {
-      type: "api-autocomplete",
+      type: "autocomplete",
       title: "What's your zip code?",
       name: "zip-code",
       requestUrl: "/zip-code"

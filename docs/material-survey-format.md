@@ -59,7 +59,7 @@ The following question types are available...
 | rating             | A rating.                                                               |
 | file               | Upload a file.                                                          |
 | slider             | A numeric slider.                                                       |
-| api-autocomplete   | Autocomplete using an API.                                              |
+| autocomplete       | Autocomplete using an API.                                              |
 | us-region          | Select a US Region (East Coast, Midwest, West Coast, ...)               |
 | multiple-us-region | Select multiple US regions.                                             |
 | us-state           | Select a us state.                                                      |
@@ -179,7 +179,7 @@ type DynamicMatrixQuestion = {
 | max  | Maximum value |
 | step | Step size     |
 
-### api-autocomplete
+### autocomplete
 
 | Key        | Description                              |
 | ---------- | ---------------------------------------- |
