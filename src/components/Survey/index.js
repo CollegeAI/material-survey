@@ -28,19 +28,27 @@ const SurveyActions = styled.div`
   justify-content: space-between;
 `
 
-export default function Survey({
-  form,
-  onFileUpload,
-  onFinish,
-  autocompleteRequest,
-  defaultAnswers = {}
-}: {
+type Props = {
   form: SurveyMaterialFormat,
   autocompleteRequest?: AutocompleteRequestFunction,
   onFileUpload?: File => Promise<string>,
-  onFinish: Object => any,
+  onFinish?: Object => any,
+  onQuestionChange?: (
+    questionId: string,
+    newValue: any,
+    answers: Object
+  ) => any,
   defaultAnswers?: Object
-}) {
+}
+
+export default function Survey({
+  form,
+  onFileUpload,
+  onFinish = () => null,
+  autocompleteRequest,
+  onQuestionChange = () => null,
+  defaultAnswers = {}
+}: Props) {
   const [currentPage, setCurrentPage] = useState(0)
   const [answerMap, setAnswerMap] = useState(defaultAnswers)
   const [failingQuestions, changeFailingQuestions] = useState([])
@@ -117,10 +125,12 @@ export default function Survey({
             question={{ ...q, defaultAnswer: defaultAnswers[q.name] }}
             onFileUpload={onFileUpload}
             onChangeAnswer={(newAnswer: any) => {
-              setAnswerMap({
+              const newAnswerMap = {
                 ...answerMap,
                 [q.name]: newAnswer
-              })
+              }
+              setAnswerMap(newAnswerMap)
+              onQuestionChange(q.name, newAnswer, newAnswerMap)
             }}
             autocompleteRequest={autocompleteRequest}
           />
