@@ -114,7 +114,7 @@ export default function DynamicMatrixQuestion({
                       <AsyncDropdown
                         key={rowAnswer}
                         answer={rowAnswer}
-                        requestUrl={question.requestUrl}
+                        requestUrl={requestUrl}
                         autocompleteRequest={autocompleteRequest}
                         onChange={changeRowAnswer}
                       />
