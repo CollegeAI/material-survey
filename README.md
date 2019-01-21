@@ -40,24 +40,23 @@ The most important component in Material Survey is the `Survey` component, [clic
 const App = () => (
   <Survey
     // See the "format" section, this is the SurveyJS/Material Survey format
-    form={{/* ... */}}
- 
+    form={
+      {
+        /* ... */
+      }
+    }
     // Optional: Invoked when the user clicks submit or finishes survey
     // AnswerObject => any
-    onFinish={(answers) => null}
-    
-    // Optional: Required for file upload. Must handle uploading and return URL of file. 
+    onFinish={answers => null}
+    // Optional: Required for file upload. Must handle uploading and return URL of file.
     // File => Promise<string>
-    onFileUpload={(file) => ""}
-    
+    onFileUpload={file => ""}
     // Optional: Handles autocomplete requests, should return list of options for a given query
-    // (requestUrl: string, queryValue: string) => Promise<Array<{ value: string, label: string }>>
+    // (requestUrl: string, queryValue: string) => Promise<Array<{ value: string, label: string, subLabel?: string }>>
     autocompleteRequest={(requestUrl, queryValue) => Promise.resolve([])}
-    
     // Optional: Called anytime a question is changed
     // (questionId: string, newValue: any, answers: Object) => null
     onQuestionChange={(questionId, newValue, answers) => null}
-    
     // Optional: default answers or previous answers to Survey
     // Object
     defaultAnswers={{}}

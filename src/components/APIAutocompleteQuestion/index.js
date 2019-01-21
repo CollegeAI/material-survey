@@ -9,7 +9,7 @@ import Radio from "@material-ui/core/Radio"
 import QuestionContainer from "../QuestionContainer"
 import styled from "styled-components"
 import QuestionText from "../QuestionText"
-import AsyncSelect from "react-select/lib/Async"
+import AsyncDropdown from "../AsyncDropdown"
 
 const Row = styled.div`
   display: flex;
@@ -34,25 +34,11 @@ export default ({
   const [answer, changeAnswer] = useState(question.defaultAnswer || undefined)
   return (
     <QuestionContainer question={question} answered={answer !== undefined}>
-      <AsyncSelect
-        placeholder={answer}
-        className="material-survey-selection"
-        styles={{
-          menu: provided => ({
-            ...provided,
-            fontFamily: "Roboto, sans-serif"
-          }),
-          container: provided => ({
-            ...provided,
-            fontFamily: "Roboto, sans-serif"
-          }),
-          menuPortal: provided => ({ ...provided, zIndex: 10000 })
-        }}
-        loadOptions={inputValue =>
-          autocompleteRequest(question.requestUrl, inputValue)
-        }
-        menuPortalTarget={document.body}
-        onChange={({ value }) => onChangeAnswer(value)}
+      <AsyncDropdown
+        answer={answer}
+        requestUrl={question.requestUrl}
+        autocompleteRequest={autocompleteRequest}
+        onChange={onChangeAnswer}
       />
     </QuestionContainer>
   )

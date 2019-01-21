@@ -19,7 +19,8 @@ export const zipCodeAutocompleteRequest = (
       resolve([
         {
           value: info.zip,
-          label: `${info.zip} (${info.city}, ${info.state})`
+          label: info.zip,
+          subLabel: `${info.city}, ${info.state}`
         }
       ])
     }, 300)

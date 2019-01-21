@@ -12,7 +12,7 @@ import Dropdown from "../DropdownQuestion/Dropdown"
 import Checkbox from "@material-ui/core/Checkbox"
 import Delete from "@material-ui/icons/Delete"
 import TextField from "@material-ui/core/TextField"
-import AsyncSelect from "react-select/lib/Async"
+import AsyncDropdown from "../AsyncDropdown"
 
 const Row = styled.div`
   display: flex;
@@ -111,39 +111,12 @@ export default function DynamicMatrixQuestion({
                     </div>
                   ) : cellType === "autocomplete" ? (
                     <div style={{ paddingRight: 4 }}>
-                      <AsyncSelect
+                      <AsyncDropdown
                         key={rowAnswer}
-                        placeholder={rowAnswer}
-                        className="material-survey-selection"
-                        styles={{
-                          menu: provided => ({
-                            ...provided,
-                            fontFamily: "Roboto, sans-serif"
-                          }),
-                          container: provided => ({
-                            ...provided,
-                            fontFamily: "Roboto, sans-serif"
-                          }),
-                          menuPortal: provided => ({
-                            ...provided,
-                            zIndex: 10000
-                          })
-                        }}
-                        loadOptions={inputValue => {
-                          if (autocompleteRequest) {
-                            return autocompleteRequest(requestUrl, inputValue)
-                          } else {
-                            return Promise.resolve([
-                              {
-                                value: "",
-                                label:
-                                  "No autocompleteRequest callback configured"
-                              }
-                            ])
-                          }
-                        }}
-                        menuPortalTarget={document.body}
-                        onChange={({ value }) => changeRowAnswer(value)}
+                        answer={rowAnswer}
+                        requestUrl={question.requestUrl}
+                        autocompleteRequest={autocompleteRequest}
+                        onChange={changeRowAnswer}
                       />
                     </div>
                   ) : cellType === "checkbox" ? (
