@@ -27,6 +27,10 @@ export default (
           return
         }
       }
+      const isNumeric = validators.map(v => v.type).includes("numeric")
+      if (typeof newAnswer === "string" && isNumeric) {
+        newAnswer = parseFloat(newAnswer)
+      }
       onChangeAnswer(newAnswer)
       changeState({ answer: newAnswer, error: null })
     }

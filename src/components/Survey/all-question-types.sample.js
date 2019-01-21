@@ -11,6 +11,20 @@ export default ({
       isRequired: true
     },
     {
+      type: "text",
+      title: "Type any number!",
+      name: "text-feeling",
+      validators: [
+        {
+          type: "numeric",
+          minValue: 1,
+          maxValue: 200,
+          text: "Woah that's wayyy too high"
+        }
+      ],
+      isRequired: true
+    },
+    {
       type: "dropdown",
       title: "How do you feel about this dropdown?",
       name: "dropdown-feeling",
