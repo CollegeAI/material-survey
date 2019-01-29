@@ -10,9 +10,13 @@ import { zipCodeAutocompleteRequest } from "../APIAutocompleteQuestion/index.sto
 import DynamicMatrixQuestion from "./"
 
 storiesOf("DynamicMatrixQuestion", module)
-  .add("Basic", () => (
+  .add("Preloaded", () => (
     <DynamicMatrixQuestion
       onChangeAnswer={action("onChangeAnswer")}
+      defaultAnswer={[
+        { language: "English", level: "Intermediate" },
+        { language: "Spanish", level: "Beginner" }
+      ]}
       question={{
         type: "matrixdynamic",
         name: "other_languages",
@@ -21,13 +25,12 @@ storiesOf("DynamicMatrixQuestion", module)
           {
             title: "Language",
             name: "language",
-            cellType: "dropdown",
-            choices: ["Spanish", "English", "French"]
+            cellType: "text"
           },
           {
             title: "Level",
             name: "level",
-            cellType: "checkbox",
+            cellType: "dropdown",
             choices: ["Beginner", "Intermediate", "Advanced"]
           }
         ]

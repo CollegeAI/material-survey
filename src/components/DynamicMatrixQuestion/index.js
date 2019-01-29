@@ -16,7 +16,7 @@ import AsyncDropdown from "../AsyncDropdown"
 
 const Row = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   margin-bottom: 10px;
 `
 
@@ -62,16 +62,18 @@ const CheckboxButton = styled(Button)`
 export default function DynamicMatrixQuestion({
   question,
   autocompleteRequest,
-  onChangeAnswer
+  onChangeAnswer,
+  defaultAnswer = []
 }: {
   question: DynamicMatrixQuestionType,
   autocompleteRequest?: Function,
-  onChangeAnswer: Function
+  onChangeAnswer: Function,
+  defaultAnswer?: Array<Object>
 }) {
   const [{ answer, error }, changeAnswer] = (useQuestionAnswer(
     question,
     onChangeAnswer,
-    []
+    defaultAnswer
   ): [{ answer: Array<{ [string]: any }>, error: string }, Function])
   const answerWithBlank = answer.concat([{}])
   return (
@@ -148,10 +150,12 @@ export default function DynamicMatrixQuestion({
                       })}
                     </div>
                   ) : cellType === "text" ? (
-                    <TextField
-                      value={rowAnswer || ""}
-                      onChange={e => changeRowAnswer(e.target.value)}
-                    />
+                    <div style={{ paddingRight: 4 }}>
+                      <TextField
+                        value={rowAnswer || ""}
+                        onChange={e => changeRowAnswer(e.target.value)}
+                      />
+                    </div>
                   ) : (
                     `Unknown Cell Type "${cellType}"`
                   )}
@@ -162,6 +166,7 @@ export default function DynamicMatrixQuestion({
           <LastCol>
             <Button
               tabIndex={-1}
+              style={{ alignSelf: "center" }}
               disabled={i === answerWithBlank.length - 1}
               onClick={() =>
                 changeAnswer([...answer.slice(0, i), ...answer.slice(i + 1)])
