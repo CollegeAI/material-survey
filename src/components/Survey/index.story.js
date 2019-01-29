@@ -51,8 +51,26 @@ storiesOf("Survey", module)
       onFinish={action("onFinish")}
     />
   ))
+  .add("WorkAround Interview Flat", () => (
+    <Survey
+      variant="flat"
+      form={workaroundInterview}
+      autocompleteRequest={zipCodeAutocompleteRequest}
+      onFileUpload={() => Promise.resolve("http://path.to/file")}
+      onFinish={action("onFinish")}
+    />
+  ))
   .add("CollegeAI Survey", () => (
     <Survey
+      form={{ questions: collegeaiSurvey }}
+      autocompleteRequest={zipCodeAutocompleteRequest}
+      onFileUpload={() => Promise.resolve("http://path.to/file")}
+      onFinish={action("onFinish")}
+    />
+  ))
+  .add("CollegeAI Survey Flat", () => (
+    <Survey
+      variant="flat"
       form={{ questions: collegeaiSurvey }}
       autocompleteRequest={zipCodeAutocompleteRequest}
       onFileUpload={() => Promise.resolve("http://path.to/file")}

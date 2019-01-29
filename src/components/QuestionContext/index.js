@@ -3,5 +3,7 @@
 import React, { createContext } from "react"
 
 export default createContext<{
-  error?: string
+  error?: string,
+  containerStyleType?: string,
+  noCheckmarks?: boolean
 }>()

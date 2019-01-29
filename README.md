@@ -1,6 +1,6 @@
 # Material Survey
 
-A [material ui](https://material-ui.com/) survey library for displaying and retrieving input from complex forms.
+A [material ui](https://material-ui.com/) survey library for displaying and retrieving input from complex forms. [Demo](https://collegeai.github.io/material-survey/?selectedKind=Survey&selectedStory=WorkAround%20Interview&full=0&addons=1&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel)
 
 This survey powers surveys on [collegeai.com](https://collegeai.com).
 
@@ -60,6 +60,15 @@ const App = () => (
     // Optional: default answers or previous answers to Survey
     // Object
     defaultAnswers={{}}
+    // Optional: Style variants for the survey
+    // "flat" | "paper"
+    variant="paper"
+    // Optional: Whether or not to show complete/next/prev buttons
+    // boolean
+    noActions={false}
+    // Optional: Customize complete text/content. Accepts React element.
+    // string | React$Element
+    completeText="Complete"
   />
 )
 ```

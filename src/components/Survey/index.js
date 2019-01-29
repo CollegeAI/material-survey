@@ -25,13 +25,17 @@ const scrollToElement = idOrElm => {
 
 const SurveyActions = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: ${({ onlyOnePage }) =>
+    !onlyOnePage ? "space-between" : "space-around"};
 `
 
 type Props = {
   form: SurveyMaterialFormat,
+  variant?: "flat" | "paper",
   autocompleteRequest?: AutocompleteRequestFunction,
   onFileUpload?: File => Promise<string>,
+  noActions?: boolean,
+  completeText?: any,
   onFinish?: Object => any,
   onQuestionChange?: (
     questionId: string,
@@ -44,6 +48,9 @@ type Props = {
 export default function Survey({
   form,
   onFileUpload,
+  noActions,
+  completeText,
+  variant = "paper",
   onFinish = () => null,
   autocompleteRequest,
   onQuestionChange = () => null,
@@ -70,6 +77,8 @@ export default function Survey({
     firstPage = currentPage === 0
     lastPage = currentPage === form.pages.length - 1
   }
+
+  const onlyOnePage = firstPage && lastPage
 
   const validatePage = () => {
     const fqs: Array<{
@@ -118,7 +127,8 @@ export default function Survey({
           value={{
             error: (
               failingQuestions.find(fq => fq.question.name === q.name) || {}
-            ).text
+            ).text,
+            containerStyleType: variant
           }}
         >
           <SurveyQuestion
@@ -136,44 +146,56 @@ export default function Survey({
           />
         </QuestionContext.Provider>
       ))}
-      <SurveyActions>
-        <Button
-          disabled={firstPage}
-          onClick={() => setCurrentPage(currentPage - 1)}
-        >
-          <BackIcon />
-          Prev
-        </Button>
-        <Button
-          onClick={() => {
-            const { question: failingQuestion, text } = validatePage()
-            if (failingQuestion) {
-              scrollToElement(failingQuestion.name)
-            } else {
-              onFinish(answerMap)
-            }
-          }}
-          disabled={!lastPage}
-        >
-          <CompleteIcon style={{ marginRight: 4 }} />
-          Complete
-        </Button>
-        <Button
-          onClick={() => {
-            const { question: failingQuestion, text } = validatePage()
-            if (failingQuestion) {
-              scrollToElement(failingQuestion.name)
-            } else {
-              scrollToElement(surveyDiv.current)
-              setCurrentPage(currentPage + 1)
-            }
-          }}
-          disabled={!pageComplete || lastPage}
-        >
-          Next
-          <NextIcon />
-        </Button>
-      </SurveyActions>
+      {!noActions && (
+        <SurveyActions onlyOnePage={onlyOnePage}>
+          {!onlyOnePage && (
+            <Button
+              disabled={firstPage}
+              onClick={() => setCurrentPage(currentPage - 1)}
+            >
+              <BackIcon />
+              Prev
+            </Button>
+          )}
+          <Button
+            onClick={() => {
+              const { question: failingQuestion, text } = validatePage()
+              if (failingQuestion) {
+                scrollToElement(failingQuestion.name)
+              } else {
+                onFinish(answerMap)
+              }
+            }}
+            disabled={!lastPage}
+          >
+            {completeText ? (
+              completeText
+            ) : (
+              <>
+                <CompleteIcon style={{ marginRight: 4 }} />
+                Complete
+              </>
+            )}
+          </Button>
+          {!onlyOnePage && (
+            <Button
+              onClick={() => {
+                const { question: failingQuestion, text } = validatePage()
+                if (failingQuestion) {
+                  scrollToElement(failingQuestion.name)
+                } else {
+                  scrollToElement(surveyDiv.current)
+                  setCurrentPage(currentPage + 1)
+                }
+              }}
+              disabled={!pageComplete || lastPage}
+            >
+              Next
+              <NextIcon />
+            </Button>
+          )}
+        </SurveyActions>
+      )}
     </div>
   )
 }

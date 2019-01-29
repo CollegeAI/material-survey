@@ -6,38 +6,25 @@ import { storiesOf } from "@storybook/react"
 import { action } from "@storybook/addon-actions"
 
 import QuestionContainer from "./"
+import QuestionContext from "../QuestionContext"
 
-const AnimatedQuestionContainer = () => {
-  const [answered, changeAnswer] = useState(false)
-  useEffect(() => {
-    const interval = setInterval(() => {
-      changeAnswer(true)
-      setTimeout(() => {
-        changeAnswer(false)
-      }, 1000)
-    }, 2000)
-
-    return () => {
-      clearInterval(interval)
-    }
-  })
-  return (
+const QuestionContainerFlat = () => (
+  <QuestionContext.Provider value={{ containerStyleType: "flat" }}>
     <QuestionContainer
       question={{
         title: "What is your favorite flavor of ice cream?",
         name: "favorite-ice-cream",
-        description: "e.g. chocolate, vanilla, rocky road",
-        isRequired: true
+        description: "e.g. chocolate, vanilla, rocky road"
       }}
-      answered={answered}
+      answered
     >
       Some Question Content
     </QuestionContainer>
-  )
-}
+  </QuestionContext.Provider>
+)
 
 storiesOf("QuestionContainer", module)
-  .add("Basic", () => (
+  .add("Paper", () => (
     <QuestionContainer
       question={{
         title: "What is your favorite flavor of ice cream?",
@@ -49,16 +36,17 @@ storiesOf("QuestionContainer", module)
       Some Question Content
     </QuestionContainer>
   ))
-  .add("Required", () => (
-    <QuestionContainer
-      question={{
-        title: "What is your favorite flavor of ice cream?",
-        name: "favorite-ice-cream",
-        description: "e.g. chocolate, vanilla, rocky road",
-        isRequired: true
+  .add("Flat", () => (
+    <div
+      style={{
+        margin: 10,
+        backgroundColor: "#fff",
+        border: "1px solid #ccc",
+        borderRadius: 4
       }}
     >
-      Some Question Content
-    </QuestionContainer>
+      <QuestionContainerFlat />
+      <QuestionContainerFlat />
+      <QuestionContainerFlat />
+    </div>
   ))
-  .add("Animate Answered", () => <AnimatedQuestionContainer />)
