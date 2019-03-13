@@ -36,6 +36,7 @@
     "lodash": "^4.17.11",
     "prettier": "^1.15.3",
     "raw-loader": "^1.0.0",
+    "react-dom": "^16.8.4",
     "react-hot-loader": "next",
     "react-markdown": "^4.0.4",
     "storybook-addon-prettier-source": "^2.1.2",
@@ -44,7 +45,7 @@
   "dependencies": {
     "k-choice-sort": "^1.0.9",
     "lodash": "^4.17.11",
-    "react": "alpha",
+    "react": "^16.8.4",
     "react-dropzone": "^8.0.1",
     "react-select": "^2.1.2",
     "styled-components": "^4.1.2",

@@ -1948,7 +1948,7 @@ babel-plugin-minify-constant-folding@^0.5.0:
     babel-helper-evaluate-path "^0.5.0"
 
 babel-plugin-minify-dead-code-elimination@^0.6.0-alpha.5+245949f:
-  version "0.6.0-alpha.5+245949f"
+  version "0.6.0-alpha.5"
   resolved "https://registry.yarnpkg.com/babel-plugin-minify-dead-code-elimination/-/babel-plugin-minify-dead-code-elimination-0.6.0-alpha.5.tgz#4d5c33616af8cdd8e4be6c94d5462cee0597f095"
   dependencies:
     babel-helper-evaluate-path "^0.5.0"
@@ -2076,7 +2076,7 @@ babel-plugin-transform-undefined-to-void@^6.9.4:
   resolved "https://registry.yarnpkg.com/babel-plugin-transform-undefined-to-void/-/babel-plugin-transform-undefined-to-void-6.9.4.tgz#be241ca81404030678b748717322b89d0c8fe280"
 
 "babel-preset-minify@^0.5.0 || 0.6.0-alpha.5":
-  version "0.6.0-alpha.5+245949f"
+  version "0.6.0-alpha.5"
   resolved "https://registry.yarnpkg.com/babel-preset-minify/-/babel-preset-minify-0.6.0-alpha.5.tgz#e6c79d5155cc92ad59149c1a7799c0260c8db1f8"
   dependencies:
     babel-plugin-minify-builtins "^0.5.0"
@@ -6033,6 +6033,16 @@ react-dom@^16.6.0, react-dom@^16.6.3:
     prop-types "^15.6.2"
     scheduler "^0.11.2"
 
+react-dom@^16.8.4:
+  version "16.8.4"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.8.4.tgz#1061a8e01a2b3b0c8160037441c3bf00a0e3bc48"
+  integrity sha512-Ob2wK7XG2tUDt7ps7LtLzGYYB6DXMCLj0G5fO6WeEICtT4/HdpOi7W/xLzZnR6RCG1tYza60nMdqtxzA8FaPJQ==
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+    prop-types "^15.6.2"
+    scheduler "^0.13.4"
+
 react-dropzone@^8.0.1:
   version "8.0.1"
   resolved "https://registry.yarnpkg.com/react-dropzone/-/react-dropzone-8.0.1.tgz#54b954bb4f53ec628a5e0cea894e3b8d87de1560"
@@ -6200,14 +6210,15 @@ react@^16.4.2, react@^16.6.0, react@^16.6.3:
     prop-types "^15.6.2"
     scheduler "^0.11.2"
 
-react@alpha:
-  version "16.7.0-alpha.2"
-  resolved "https://registry.yarnpkg.com/react/-/react-16.7.0-alpha.2.tgz#924f2ae843a46ea82d104a8def7a599fbf2c78ce"
+react@^16.8.4:
+  version "16.8.4"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.8.4.tgz#fdf7bd9ae53f03a9c4cd1a371432c206be1c4768"
+  integrity sha512-0GQ6gFXfUH7aZcjGVymlPOASTuSjlQL4ZtVC5YKH+3JL6bBLCVO21DknzmaPlI90LN253ojj02nsapy+j7wIjg==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
     prop-types "^15.6.2"
-    scheduler "^0.12.0-alpha.2"
+    scheduler "^0.13.4"
 
 "readable-stream@1 || 2", readable-stream@^2.0.0, readable-stream@^2.0.1, readable-stream@^2.0.2, readable-stream@^2.0.4, readable-stream@^2.0.6, readable-stream@^2.1.5, readable-stream@^2.2.2, readable-stream@^2.3.3, readable-stream@^2.3.6, readable-stream@~2.3.6:
   version "2.3.6"
@@ -6554,6 +6565,14 @@ scheduler@^0.11.2:
 scheduler@^0.12.0-alpha.2:
   version "0.12.0-alpha.3"
   resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.12.0-alpha.3.tgz#59afcaba1cb79e3e8bee91de94eb8f42c9152c2b"
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+
+scheduler@^0.13.4:
+  version "0.13.4"
+  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.13.4.tgz#8fef05e7a3580c76c0364d2df5e550e4c9140298"
+  integrity sha512-cvSOlRPxOHs5dAhP9yiS/6IDmVAVxmk33f0CtTJRkmUWcb1Us+t7b1wqdzoC0REw2muC9V5f1L/w5R5uKGaepA==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
