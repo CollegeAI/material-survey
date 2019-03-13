@@ -1,6 +1,6 @@
 {
   "name": "material-survey",
-  "version": "1.0.24",
+  "version": "1.0.25",
   "description": "Material UI Survey Framework",
   "main": "index.js",
   "scripts": {
