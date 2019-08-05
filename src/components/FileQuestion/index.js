@@ -6,7 +6,7 @@ import QuestionContainer from "../QuestionContainer"
 import styled from "styled-components"
 import QuestionText from "../QuestionText"
 import useQuestionAnswer from "../../hooks/use-question-answer"
-import Dropzone from "react-dropzone/dist/es"
+import Dropzone from "react-dropzone"
 import CircularProgress from "@material-ui/core/CircularProgress"
 
 const Box = styled.div`
