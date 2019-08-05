@@ -1,5 +1,5 @@
 module.exports = {
   "presets": ["@babel/preset-react", "@babel/preset-flow"],
-  "plugins": ["transform-es2015-modules-commonjs"]
+  "plugins": ["transform-es2015-modules-commonjs", "@babel/plugin-proposal-class-properties"]
 }
 

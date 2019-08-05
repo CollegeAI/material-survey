@@ -6,10 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 6006",
+    "prebuild": "rimraf dist",
     "build": "npm run build:cjs && cp ./package.json ./dist/package.json",
     "build:format": "babel --plugins=babel-plugin-flow-runtime --presets=@babel/preset-flow ./src/material-survey-format.js.flow --out-file=./src/material-survey-format.js",
-    "build-storybook": "build-storybook",
     "build:cjs": "NODE_ENV=production babel ./src --config-file ./build.config.js --out-dir ./dist --ignore \"**/*.test.js\" --ignore \"**/*.story.js\" --copy-files",
+    "build-storybook": "build-storybook",
     "release": "npm run build && npm publish dist",
     "deploy-storybook": "storybook-to-ghpages"
   },
@@ -19,6 +20,7 @@
   "devDependencies": {
     "@babel/cli": "^7.2.0",
     "@babel/core": "^7.2.0",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/preset-flow": "^7.0.0",
     "@hot-loader/react-dom": "16.7.0-alpha.2.2",
     "@material-ui/core": "^3.6.1",
@@ -32,6 +34,7 @@
     "@storybook/storybook-deployer": "^2.8.1",
     "babel-loader": "^8.0.4",
     "babel-plugin-flow-runtime": "^0.17.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "babel-preset-react-app": "^6.1.0",
     "flow-runtime": "^0.17.0",
     "lodash": "^4.17.11",
@@ -40,6 +43,7 @@
     "react-dom": "^16.8.4",
     "react-hot-loader": "next",
     "react-markdown": "^4.0.4",
+    "rimraf": "^2.6.3",
     "storybook-addon-prettier-source": "^2.1.2",
     "zipcodes": "^8.0.0"
   },
