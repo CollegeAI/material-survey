@@ -6,10 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 6006",
-    "build": "npm run build:babel && cp ./package.json ./dist/package.json",
+    "build": "npm run build:cjs && cp ./package.json ./dist/package.json",
     "build:format": "babel --plugins=babel-plugin-flow-runtime --presets=@babel/preset-flow ./src/material-survey-format.js.flow --out-file=./src/material-survey-format.js",
     "build-storybook": "build-storybook",
-    "build:babel": "NODE_ENV=production babel ./src --out-dir=./dist",
+    "build:cjs": "NODE_ENV=production babel ./src --config-file ./build.config.js --out-dir ./dist --ignore \"**/*.test.js\" --ignore \"**/*.story.js\" --copy-files",
+    "release": "npm run build && npm publish dist",
     "deploy-storybook": "storybook-to-ghpages"
   },
   "author": "Severin Ibarluzea, CollegeAI Inc.",
