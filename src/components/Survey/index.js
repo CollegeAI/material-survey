@@ -166,7 +166,7 @@ export default function Survey({
                 onFinish(answerMap)
               }
             }}
-            disabled={!lastPage}
+            disabled={!lastPage || !pageComplete}
           >
             {completeText ? (
               completeText

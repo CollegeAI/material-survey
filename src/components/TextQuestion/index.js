@@ -30,6 +30,7 @@ export default ({
       <TextField
         style={{ width: "100%" }}
         value={answer}
+        placeholder={question.placeholder}
         multiline={question.type === "multiline-text"}
         onChange={e => changeAnswer(e.target.value)}
       />

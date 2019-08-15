@@ -7,6 +7,7 @@ import { action } from "@storybook/addon-actions"
 import { zipCodeAutocompleteRequest } from "../APIAutocompleteQuestion/index.story.js"
 import allQuestionsSurvey from "./all-question-types.sample.js"
 import workaroundInterview from "./workaround-interview.sample.js"
+import validatorsSurvey from "./validators.sample.js"
 import { questionList as collegeaiSurvey } from "./collegeai-survey.sample.js"
 
 import Survey from "./"
@@ -76,4 +77,7 @@ storiesOf("Survey", module)
       onFileUpload={() => Promise.resolve("http://path.to/file")}
       onFinish={action("onFinish")}
     />
+  ))
+  .add("Using Validators", () => (
+    <Survey form={validatorsSurvey} onFinish={action("onFinish")} />
   ))
