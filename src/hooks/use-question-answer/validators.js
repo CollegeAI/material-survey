@@ -33,7 +33,7 @@ const validate = (validator: Validator, value: any, answerMap?: Object) => {
     }
     case "regex": {
       if (typeof value !== "string") return false
-      const re = new RegExp(value)
+      const re = new RegExp(validator.regex)
       return re.test(value)
     }
     case "answercount": {
