@@ -116,7 +116,8 @@ class SurveyQuestionComponent extends Component<*, *> {
           />
         )
       }
-      case "choiceranker": {
+      case "choiceranker":
+      case "choice-ranker": {
         return (
           <ChoiceRankerQuestion
             question={question}

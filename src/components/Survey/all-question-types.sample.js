@@ -80,6 +80,40 @@ export default ({
       title: "What's your zip code?",
       name: "zip-code",
       requestUrl: "/zip-code"
+    },
+    {
+      title:
+        "Which statement best describes what you would like to be able to say after college?",
+      name: "say-after-college",
+      type: "choice-ranker",
+      choicesAtOnce: 4,
+      trials: 3,
+      choices: [
+        {
+          text: "I made some of my best friends to this day.",
+          value: "made-my-best-friends"
+        },
+        {
+          text: "I did ground-breaking research.",
+          value: "ground-breaking-research"
+        },
+        {
+          text: "I see the world in a completely different way now.",
+          value: "see-the-world-differently"
+        },
+        {
+          text: "I got a great, affordable education.",
+          value: "great-affordable-education"
+        },
+        {
+          text: "I had a lot of fun.",
+          value: "had-lot-of-fun"
+        },
+        {
+          text: "I'm an expert in my field.",
+          value: "expert-in-field"
+        }
+      ]
     }
   ]
 }: SurveyMaterialFormat)
