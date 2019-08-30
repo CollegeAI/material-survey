@@ -31,6 +31,10 @@ const Col = styled.div`
 
 const HeaderCol = styled(Col)`
   font-weight: bold;
+  padding-right: 10px;
+  &.small {
+    font-size: 12px;
+  }
 `
 
 const LastCol = styled(Col)`
@@ -80,7 +84,12 @@ export default function DynamicMatrixQuestion({
     <QuestionContainer question={question} answered={answer.length > 0}>
       <Row>
         {question.columns.map(({ title, name }) => (
-          <HeaderCol key={name}>{title || name}</HeaderCol>
+          <HeaderCol
+            className={question.columns.length > 3 ? "small" : undefined}
+            key={name}
+          >
+            {title || name}
+          </HeaderCol>
         ))}
         <LastCol>
           <Button tabIndex={-1} style={{ opacity: 0 }} disabled>

@@ -59,6 +59,53 @@ storiesOf("DynamicMatrixQuestion", module)
       }}
     />
   ))
+  .add("Text Type (Crowded)", () => (
+    <DynamicMatrixQuestion
+      onChangeAnswer={action("onChangeAnswer")}
+      question={{
+        type: "matrixdynamic",
+        name: "something",
+        title: "What is the text?",
+        columns: [
+          {
+            title: "Text",
+            name: "text",
+            cellType: "text"
+          },
+          {
+            title: "Text 2",
+            name: "text2",
+            cellType: "text"
+          },
+          {
+            title: "Text Lorem Ipsum 3",
+            name: "text3",
+            cellType: "text"
+          },
+          {
+            title: "This is the Text 4",
+            name: "text4",
+            cellType: "text"
+          },
+          {
+            title: "Text Confusing Text Text 5",
+            name: "text5",
+            cellType: "text"
+          },
+          {
+            title: "Long Text Text 6",
+            name: "text6",
+            cellType: "text"
+          },
+          {
+            title: "Text Additional Text 7",
+            name: "text7",
+            cellType: "text"
+          }
+        ]
+      }}
+    />
+  ))
   .add("Many-Choice Dropdown", () => (
     <DynamicMatrixQuestion
       onChangeAnswer={action("onChangeAnswer")}
