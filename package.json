@@ -51,7 +51,7 @@
     "lodash": "^4.17.11",
     "react": "^16.9.0",
     "react-dropzone": "^8.0.1",
-    "react-select": "^2.1.2",
+    "react-select": "^3.0.8",
     "styled-components": "^4.1.2",
     "surveyjs-expression-eval": "^1.0.2"
   }
