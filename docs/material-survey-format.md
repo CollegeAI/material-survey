@@ -6,6 +6,42 @@ The MaterialSurvey format is based off the [SurveyJS](https://github.com/surveyj
 
 The `material-survey-format.js.flow` file contains the type definitions.
 
+## Quick Examples
+
+This is a simple survey that displays a text question:
+
+```javascript
+{
+  questions: [
+    { title: "What is your first name?", name: "firstname", type: "text" }
+  ]
+}
+```
+
+Here's a survey with a radiogroup-style question and a checkbox question:
+
+
+```javascript
+{
+  questions: [
+    {
+      title: "Do you like Material Survey?",
+      name: "likeMaterialSurvey",
+      type: "radiogroup",
+      choices: ["yes", "no"]
+    },
+    {
+      title: "Select anything you're allergic to",
+      name: "allergies",
+      type: "checkbox",
+      choices: ["nuts", "dairy", "gluten"]
+    }
+  ]
+}
+```
+
+Going further, we can create complex multi-page surveys with conditional display logic and validation!
+
 ## Structure
 
 A Material Survey can take two forms. A single page survey simply appears as follows...
