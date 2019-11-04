@@ -28,7 +28,7 @@ Here's a survey with a radiogroup-style question and a checkbox question:
       title: "Do you like Material Survey?",
       name: "likeMaterialSurvey",
       type: "radiogroup",
-      choices: ["yes", "no"]
+      choices: ["yes", "no", "idk"]
     },
     {
       title: "Select anything you're allergic to",
