@@ -7,7 +7,7 @@ import QuestionContainer from "../QuestionContainer"
 import styled from "styled-components"
 import QuestionText from "../QuestionText"
 import TextField from "@material-ui/core/TextField"
-import Slider from "@material-ui/lab/Slider"
+import Slider from "@material-ui/core/Slider"
 import useQuestionAnswer from "../../hooks/use-question-answer"
 
 const Row = styled.div`
@@ -71,6 +71,7 @@ export default ({
         <Col>
           <Slider
             onChange={(e, value) => {
+              console.log({ value })
               changeAnswer(value)
               changeTextFieldText(value.toFixed(2))
             }}

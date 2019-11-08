@@ -9,6 +9,7 @@ import SliderQuestion from "./"
 
 storiesOf("SliderQuestion", module).add("Basic", () => (
   <SliderQuestion
+    onChangeAnswer={action("onChangeAnswer")}
     question={{
       name: "slider-example",
       title: "What was your GPA in middle school?",
