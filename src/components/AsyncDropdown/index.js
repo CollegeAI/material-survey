@@ -10,17 +10,19 @@ type Props = {
     requestUrl: string,
     query: string
   ) => Promise<Array<string>>,
-  requestUrl: string
+  requestUrl: string,
+  placeholder?: string
 }
 
 export default ({
   answer,
   onChange,
   autocompleteRequest,
+  placeholder,
   requestUrl
 }: Props) => (
   <AsyncSelect
-    placeholder={answer}
+    placeholder={answer || placeholder}
     className="material-survey-selection"
     styles={{
       menu: provided => ({

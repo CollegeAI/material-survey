@@ -33,7 +33,8 @@ storiesOf("APIAutocompleteQuestion", module).add("Basic", () => (
       name: "autocomplete-example",
       title: "What is your zip code?",
       requestUrl: "/zipcodes",
-      type: "autocomplete"
+      type: "autocomplete",
+      placeholder: "Type your full zip code (e.g. 14420)"
     }}
     onChangeAnswer={action("onChangeAnswer")}
     autocompleteRequest={zipCodeAutocompleteRequest}

@@ -1,7 +1,7 @@
 // @flow
 
 import type {
-  APIAutocompleteQuestion,
+  APIAutocompleteQuestion as APIAutocompleteQuestionType,
   AutocompleteRequestFunction
 } from "../../material-survey-format.js.flow"
 import React, { useState } from "react"
@@ -22,12 +22,12 @@ const AnswerContainer = styled.div`
   cursor: pointer;
 `
 
-export default ({
+const APIAutocompleteQuestion = ({
   question,
   onChangeAnswer,
   autocompleteRequest
 }: {
-  question: APIAutocompleteQuestion,
+  question: APIAutocompleteQuestionType,
   onChangeAnswer: Function,
   autocompleteRequest: AutocompleteRequestFunction
 }) => {
@@ -36,6 +36,7 @@ export default ({
     <QuestionContainer question={question} answered={answer !== undefined}>
       <AsyncDropdown
         answer={answer}
+        placeholder={question.placeholder}
         requestUrl={question.requestUrl}
         autocompleteRequest={autocompleteRequest}
         onChange={onChangeAnswer}
@@ -43,3 +44,5 @@ export default ({
     </QuestionContainer>
   )
 }
+
+export default APIAutocompleteQuestion
