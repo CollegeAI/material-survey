@@ -43,11 +43,15 @@ export default function BooleanQuestion({
         <AnswerContainer
           onClick={() => changeAnswer(true)}
           style={{ marginRight: 20 }}
+          role="button"
         >
           <Radio checked={answer === true} />
           <QuestionText>Yes</QuestionText>
         </AnswerContainer>
-        <AnswerContainer onClick={() => changeAnswer(false)}>
+        <AnswerContainer
+          role="button"
+          onClick={() => changeAnswer(false)}
+        >
           <Radio checked={answer === false} />
           <QuestionText>No</QuestionText>
         </AnswerContainer>
