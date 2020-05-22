@@ -78,7 +78,10 @@ export default function DynamicMatrixQuestion({
   ): [{ answer: Array<{ [string]: any }>, error: string }, Function])
   const answerWithBlank = answer.concat([{}])
   return (
-    <QuestionContainer question={question} answered={answer.length > 0}>
+    <QuestionContainer
+      question={question}
+      answered={answer.length > 0}
+    >
       <Row>
         {question.columns.map(({ title, name }) => (
           <HeaderCol
