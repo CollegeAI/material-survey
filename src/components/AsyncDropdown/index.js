@@ -41,9 +41,19 @@ export default ({
           ({ value, label, subLabel }: any) => ({
             value,
             label: subLabel ? (
-              <div>
+              <div
+                aria-label={label}
+              >
                 {label}
-                <div style={{ opacity: 0.7, fontSize: 12 }}>{subLabel}</div>
+                <div
+                  style={{
+                    opacity: 0.7,
+                    fontSize: 12
+                  }}
+                  aria-label={subLabel}
+                >
+                  {subLabel}
+                </div>
               </div>
             ) : (
               label

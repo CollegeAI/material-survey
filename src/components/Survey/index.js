@@ -120,7 +120,8 @@ export default function Survey({
   const pageComplete = true
 
   return (
-    <div ref={surveyDiv}>
+    <div
+      ref={surveyDiv}>
       {visibleQuestions.map(q => (
         <QuestionContext.Provider
           key={q.name}

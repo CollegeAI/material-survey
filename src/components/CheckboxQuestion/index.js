@@ -51,8 +51,15 @@ export default function CheckboxQuestion({
             changeAnswer(newAnswer)
           }
           return (
-            <CheckboxItem onClick={onChange} key={value}>
-              <Checkbox tabIndex={-1} checked={answer.includes(value)} />
+            <CheckboxItem
+              role="button"
+              onClick={onChange}
+              key={value}
+            >
+              <Checkbox
+                tabIndex={-1}
+                checked={answer.includes(value)}
+              />
               <QuestionText>{text}</QuestionText>
             </CheckboxItem>
           )
@@ -64,7 +71,9 @@ export default function CheckboxQuestion({
             a => !question.choices.some(c => c === a || (c || {}).value === a)
           )
           .map((otherValue, i) => (
-            <CheckboxItem>
+            <CheckboxItem
+              role="button"
+            >
               <Checkbox
                 tabIndex={-1}
                 onClick={() => {
