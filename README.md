@@ -1,5 +1,7 @@
 # Material Survey
 
+[![npm version](https://badge.fury.io/js/material-survey.svg)](https://badge.fury.io/js/material-survey)
+
 A [material ui](https://material-ui.com/) survey library for displaying and retrieving input from complex forms. [Demo](https://collegeai.github.io/material-survey/?selectedKind=Survey&selectedStory=WorkAround%20Interview&full=0&addons=1&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel)
 
 This survey powers surveys on [collegeai.com](https://collegeai.com).
