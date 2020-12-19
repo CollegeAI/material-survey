@@ -1,6 +1,6 @@
 {
   "name": "material-survey",
-  "version": "1.0.38",
+  "version": "1.0.40",
   "description": "Material UI Survey Framework",
   "repository": {
     "type": "git",
@@ -13,7 +13,7 @@
     "prebuild": "rimraf dist",
     "build": "npm run build:cjs && cp ./package.json ./dist/package.json && cp ./README.md ./dist/README.md",
     "build:format": "babel --plugins=babel-plugin-flow-runtime --presets=@babel/preset-flow ./src/material-survey-format.js.flow --out-file=./src/material-survey-format.js",
-    "build:cjs": "NODE_ENV=production babel ./src --config-file ./build.config.js --out-dir ./dist --ignore \"**/*.test.js\" --ignore \"**/*.story.js\" --copy-files",
+    "build:cjs": "babel ./src --config-file ./build.config.js --out-dir ./dist --ignore \"**/*.test.js\" --ignore \"**/*.story.js\" --copy-files",
     "build-storybook": "build-storybook",
     "release": "npm run build && npm publish dist",
     "deploy-storybook": "storybook-to-ghpages"
@@ -47,15 +47,18 @@
     "react": "^16.9.0",
     "react-markdown": "^4.0.4",
     "rimraf": "^2.6.3",
+    "styled-components": "^4.1.2",
     "storybook-addon-prettier-source": "^2.1.2",
     "zipcodes": "^8.0.0"
+  },
+  "peerDependencies": {
+    "styled-components": "^4.1.2"
   },
   "dependencies": {
     "k-choice-sort": "^1.0.9",
     "lodash": "^4.17.11",
     "react-dropzone": "^8.0.1",
     "react-select": "^3.0.8",
-    "styled-components": "^4.1.2",
     "surveyjs-expression-eval": "^1.0.2"
   }
 }
