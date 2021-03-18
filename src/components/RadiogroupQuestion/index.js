@@ -63,7 +63,7 @@ export default function RadioGroupQuestion({
     >
       {choices.map(({ value, text }) => (
         <RadioItem onClick={() => changeAnswer(value)} key={value}>
-          <Radio tabIndex={-1} checked={answer === value} />
+          <Radio tabIndex={-1} checked={answer === value} id={question.id?question.id+text:""} />
           <QuestionText>{text}</QuestionText>
         </RadioItem>
       ))}
@@ -72,6 +72,7 @@ export default function RadioGroupQuestion({
           <Radio
             checked={answer === otherText}
             onClick={() => changeAnswer(otherText)}
+            id={question.id?question.id:""}
           />
           <TextField
             // inputProps={{ style: { fontSize: 8 } }}
@@ -84,6 +85,7 @@ export default function RadioGroupQuestion({
                 changeOtherText(e.target.value)
               }
             }}
+            id={question.id?question.id+"Other":""}
           />
         </RadioItemNoRipple>
       )}

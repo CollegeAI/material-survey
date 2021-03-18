@@ -57,6 +57,7 @@ export default ({
             marginRight: 10,
             width: 80
           }}
+          id={question.id?question.id+"Text":""}
           inputProps={{ style: { textAlign: "center" } }}
           value={textFieldText || ""}
           onChange={e => {
@@ -75,6 +76,7 @@ export default ({
               changeAnswer(value)
               changeTextFieldText(value.toFixed(2))
             }}
+            id={question.id?question.id+"Slider":""}
             style={{ opacity: answer === undefined ? 0.5 : 1 }}
             value={
               answer === undefined ? (question.max + question.min) / 2 : answer

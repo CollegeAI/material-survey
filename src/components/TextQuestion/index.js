@@ -33,6 +33,7 @@ export default ({
         placeholder={question.placeholder}
         multiline={question.type === "multiline-text"}
         onChange={e => changeAnswer(e.target.value)}
+        id={question.id?question.id:""}
       />
     </QuestionContainer>
   )

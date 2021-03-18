@@ -118,6 +118,7 @@ export default function DynamicMatrixQuestion({
                         answer={answerWithBlank[i][name]}
                         choices={choices}
                         changeAnswer={newAnswer => changeRowAnswer(newAnswer)}
+                        id={question.id?question.id+"Dropdown":""}
                       />
                     </div>
                   ) : cellType === "autocomplete" ? (
@@ -128,6 +129,7 @@ export default function DynamicMatrixQuestion({
                         requestUrl={requestUrl}
                         autocompleteRequest={autocompleteRequest}
                         onChange={changeRowAnswer}
+                        id={question.id?question.id+"DropDown":""}
                       />
                     </div>
                   ) : cellType === "checkbox" ? (
@@ -152,6 +154,7 @@ export default function DynamicMatrixQuestion({
                               tabIndex={-1}
                               className="checkbox"
                               checked={(rowAnswer || []).includes(choice.value)}
+                              id={question.id?question.id+choice.text:""}
                             />
                             <div className="text">{choice.text}</div>
                           </CheckboxButton>
@@ -163,6 +166,7 @@ export default function DynamicMatrixQuestion({
                       <TextField
                         value={rowAnswer || ""}
                         onChange={e => changeRowAnswer(e.target.value)}
+                        id={question.id?question.id+"Text":""}
                       />
                     </div>
                   ) : (
@@ -180,6 +184,7 @@ export default function DynamicMatrixQuestion({
               onClick={() =>
                 changeAnswer([...answer.slice(0, i), ...answer.slice(i + 1)])
               }
+              id={question.id?question.id+"Button":""}
             >
               <Delete />
             </Button>

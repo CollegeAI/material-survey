@@ -158,7 +158,7 @@ class SurveyQuestionComponent extends Component<*, *> {
       case "file": {
         if (!onFileUpload)
           return (
-            <Red>
+            <Red id={question.id?question.id+"Red":""}>
               File Question Type requires an upload handler. Specify
               onFileUpload.
             </Red>

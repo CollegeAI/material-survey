@@ -54,6 +54,7 @@ export default ({
         min={0}
         max={rankings - 1 || rateValues ? rateValues[rateValues.length - 1] : 4}
         step={1}
+        id={question.id?question.id+"Slider":""}
       />
       {rateValues ? (
         <Row>
