@@ -112,6 +112,7 @@ export default ({
         viewBox="0 0 881.23157 530.31488"
         version="1.1"
         enable_background="new 0 0 1000 589"
+        id={question.id?question.id:""}
       >
         <Path.Provider
           value={{

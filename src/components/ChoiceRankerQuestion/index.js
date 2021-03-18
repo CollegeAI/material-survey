@@ -91,6 +91,7 @@ export default ({
                     }
                   }, 300)
                 }}
+                id={question.id?question.id+choice.text:""}
               >
                 <ArrowIcon />
                 {choice.text}
@@ -111,6 +112,7 @@ export default ({
             changeCandidates(newSorter.getCandidates())
             changeAnimateDirection("middle")
           }}
+          id={question.id?question.id+"Retry":""}
         >
           <RefreshIcon style={{ width: 64, height: 64, marginRight: 8 }} />
           Redo

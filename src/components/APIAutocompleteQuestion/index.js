@@ -35,6 +35,7 @@ const APIAutocompleteQuestion = ({
   return (
     <QuestionContainer question={question} answered={answer !== undefined}>
       <AsyncDropdown
+        id={question.id?question.id:""}
         answer={answer}
         placeholder={question.placeholder}
         requestUrl={question.requestUrl}

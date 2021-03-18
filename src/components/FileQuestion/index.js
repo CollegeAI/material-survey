@@ -43,6 +43,7 @@ export default ({
     >
       {!uploading ? (
         <Dropzone
+          id={question.id?question.id+"Dropzone":""}
           onDrop={async (file: File) => {
             changeUploadError(null)
             changeUploadingState(true)

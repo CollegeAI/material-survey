@@ -55,6 +55,7 @@ export default ({
             onChange={e =>
               changeAnswer({ ...answer, [item.name]: e.target.value })
             }
+            id={question.id?question.id:""}
           />
         </Row>
       ))}

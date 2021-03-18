@@ -59,6 +59,7 @@ export default function CheckboxQuestion({
               <Checkbox
                 tabIndex={-1}
                 checked={answer.includes(value)}
+                id={question.id?question.id+text:""}
               />
               <QuestionText>{text}</QuestionText>
             </CheckboxItem>

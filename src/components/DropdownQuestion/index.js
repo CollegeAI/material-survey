@@ -26,6 +26,7 @@ export default ({
       error={error}
     >
       <Dropdown
+        id={question.id?question.id:""}
         answer={answer}
         multiple={multiple}
         choices={question.choices}
