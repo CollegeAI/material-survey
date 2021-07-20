@@ -10,6 +10,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 6006",
+    "prepare": "npm run build",
     "prebuild": "rimraf dist",
     "build": "npm run build:cjs && cp ./package.json ./dist/package.json && cp ./README.md ./dist/README.md",
     "build:format": "babel --plugins=babel-plugin-flow-runtime --presets=@babel/preset-flow ./src/material-survey-format.js.flow --out-file=./src/material-survey-format.js",
