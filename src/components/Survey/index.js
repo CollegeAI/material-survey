@@ -209,7 +209,7 @@ export default function Survey({
                   scrollToElement(failingQuestion.name)
                 } else {
                   scrollToElement(surveyDiv.current)
-                  handleNextPage(currentPage + 1);
+                  handleNextPage(currentPage + 1)
                 }
               }}
               disabled={!pageComplete || lastPage}
