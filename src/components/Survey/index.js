@@ -37,6 +37,12 @@ type Props = {
   noActions?: boolean,
   completeText?: any,
   onFinish?: Object => any,
+  onPageChange?: (
+    newPage: number, options: {
+      isPrevPage: boolean;
+      isNextPage: boolean;
+    }
+  ) => any,
   onQuestionChange?: (
     questionId: string,
     newValue: any,
@@ -53,6 +59,7 @@ export default function Survey({
   variant = "paper",
   onFinish = () => null,
   autocompleteRequest,
+  onPageChange = () => null,
   onQuestionChange = () => null,
   defaultAnswers = {}
 }: Props) {
@@ -116,6 +123,22 @@ export default function Survey({
     }
   }
 
+  const handlePrevPage = (newPage: number) => {
+    setCurrentPage(newPage);
+    onPageChange(newPage, {
+      isPrevPage: true,
+      isNextPage: false,
+    });
+  }
+
+  const handleNextPage = (newPage: number) => {
+    setCurrentPage(newPage);
+    onPageChange(newPage, {
+      isPrevPage: false,
+      isNextPage: true,
+    });
+  }
+
   // TODO complex survey validator logic
   const pageComplete = true
 
@@ -152,7 +175,7 @@ export default function Survey({
           {!onlyOnePage && (
             <Button
               disabled={firstPage}
-              onClick={() => setCurrentPage(currentPage - 1)}
+              onClick={() => handlePrevPage(currentPage - 1)}
             >
               <BackIcon />
               Prev
@@ -186,7 +209,7 @@ export default function Survey({
                   scrollToElement(failingQuestion.name)
                 } else {
                   scrollToElement(surveyDiv.current)
-                  setCurrentPage(currentPage + 1)
+                  handleNextPage(currentPage + 1);
                 }
               }}
               disabled={!pageComplete || lastPage}

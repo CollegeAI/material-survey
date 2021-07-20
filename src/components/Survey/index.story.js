@@ -9,6 +9,7 @@ import allQuestionsSurvey from "./all-question-types.sample.js"
 import workaroundInterview from "./workaround-interview.sample.js"
 import validatorsSurvey from "./validators.sample.js"
 import { questionList as collegeaiSurvey } from "./collegeai-survey.sample.js"
+import paginationSurvey from "./pagination-survey.sample.js"
 
 import Survey from "./"
 
@@ -80,4 +81,11 @@ storiesOf("Survey", module)
   ))
   .add("Using Validators", () => (
     <Survey form={validatorsSurvey} onFinish={action("onFinish")} />
+  ))
+  .add("Pagination", () => (
+    <Survey
+      form={paginationSurvey}
+      onPageChange={action("onPageChange")}
+      onFinish={action("onFinish")}
+    />
   ))
