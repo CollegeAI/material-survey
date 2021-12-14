@@ -2,16 +2,16 @@
 
 import type { DynamicMatrixQuestion as DynamicMatrixQuestionType } from "../../material-survey-format.js.flow"
 import React, { useState } from "react"
-import Radio from "@material-ui/core/Radio"
-import Button from "@material-ui/core/Button"
+import Radio from "@mui/material/Radio"
+import Button from "@mui/material/Button"
 import QuestionContainer from "../QuestionContainer"
 import styled from "styled-components"
 import QuestionText from "../QuestionText"
 import useQuestionAnswer from "../../hooks/use-question-answer"
 import Dropdown from "../DropdownQuestion/Dropdown"
-import Checkbox from "@material-ui/core/Checkbox"
-import Delete from "@material-ui/icons/Delete"
-import TextField from "@material-ui/core/TextField"
+import Checkbox from "@mui/material/Checkbox"
+import Delete from "@mui/icons-material/Delete"
+import TextField from "@mui/material/TextField"
 import AsyncDropdown from "../AsyncDropdown"
 
 const Row = styled.div`

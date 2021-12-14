@@ -5,7 +5,7 @@ import type {
   AutocompleteRequestFunction
 } from "../../material-survey-format.js.flow"
 import React, { useState } from "react"
-import Radio from "@material-ui/core/Radio"
+import Radio from "@mui/material/Radio"
 import QuestionContainer from "../QuestionContainer"
 import styled from "styled-components"
 import QuestionText from "../QuestionText"

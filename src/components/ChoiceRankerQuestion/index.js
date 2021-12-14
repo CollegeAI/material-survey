@@ -4,10 +4,10 @@ import React, { useState, useEffect } from "react"
 import type { ChoiceRankerQuestion } from "../../material-survey-format.js.flow"
 import Sorter from "k-choice-sort"
 import QuestionContainer from "../QuestionContainer"
-import Button from "@material-ui/core/Button"
+import Button from "@mui/material/Button"
 import styled from "styled-components"
-import ArrowIcon from "@material-ui/icons/ArrowRight"
-import RefreshIcon from "@material-ui/icons/Refresh"
+import ArrowIcon from "@mui/icons-material/ArrowRight"
+import RefreshIcon from "@mui/icons-material/Refresh"
 
 const ChoiceButton = styled(Button)`
   && {

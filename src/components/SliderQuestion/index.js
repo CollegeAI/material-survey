@@ -2,12 +2,12 @@
 
 import type { SliderQuestion } from "../../material-survey-format.js.flow"
 import React, { useState } from "react"
-import Radio from "@material-ui/core/Radio"
+import Radio from "@mui/material/Radio"
 import QuestionContainer from "../QuestionContainer"
 import styled from "styled-components"
 import QuestionText from "../QuestionText"
-import TextField from "@material-ui/core/TextField"
-import Slider from "@material-ui/core/Slider"
+import TextField from "@mui/material/TextField"
+import Slider from "@mui/material/Slider"
 import useQuestionAnswer from "../../hooks/use-question-answer"
 
 const Row = styled.div`

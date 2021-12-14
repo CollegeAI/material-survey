@@ -2,13 +2,13 @@
 
 import React from "react"
 import type { QuestionChoice } from "../../material-survey-format.js.flow"
-import Chip from "@material-ui/core/Chip"
-import Checkbox from "@material-ui/core/Checkbox"
+import Chip from "@mui/material/Chip"
+import Checkbox from "@mui/material/Checkbox"
 import QuestionText from "../QuestionText"
-import ListItemText from "@material-ui/core/ListItemText"
-import Select from "@material-ui/core/Select"
+import ListItemText from "@mui/material/ListItemText"
+import Select from "@mui/material/Select"
 import ReactSelect from "react-select"
-import MenuItem from "@material-ui/core/MenuItem"
+import MenuItem from "@mui/material/MenuItem"
 import styled from "styled-components"
 
 const SelectedValueContainer = styled.div`

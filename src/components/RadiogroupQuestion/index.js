@@ -3,12 +3,12 @@
 import type { RadioGroupQuestion as RadioGroupQuestionType } from "../../material-survey-format.js.flow"
 import React, { useState } from "react"
 import useQuestionAnswer from "../../hooks/use-question-answer"
-import Radio from "@material-ui/core/Radio"
+import Radio from "@mui/material/Radio"
 import QuestionContainer from "../QuestionContainer"
-import Button from "@material-ui/core/Button"
+import Button from "@mui/material/Button"
 import styled from "styled-components"
 import QuestionText from "../QuestionText"
-import TextField from "@material-ui/core/TextField"
+import TextField from "@mui/material/TextField"
 
 const RadioItem = styled(Button)`
   && {

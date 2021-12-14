@@ -2,13 +2,13 @@
 
 import type { CheckboxQuestion as CheckboxQuestionType } from "../../material-survey-format.js.flow"
 import React from "react"
-import Checkbox from "@material-ui/core/Checkbox"
+import Checkbox from "@mui/material/Checkbox"
 import QuestionContainer from "../QuestionContainer"
-import Button from "@material-ui/core/Button"
+import Button from "@mui/material/Button"
 import styled from "styled-components"
 import QuestionText from "../QuestionText"
 import useQuestionAnswer from "../../hooks/use-question-answer"
-import TextField from "@material-ui/core/TextField"
+import TextField from "@mui/material/TextField"
 
 const CheckboxItem = styled(Button)`
   && {

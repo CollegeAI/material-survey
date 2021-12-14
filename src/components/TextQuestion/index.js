@@ -2,7 +2,7 @@
 
 import type { TextQuestion } from "../../material-survey-format.js.flow"
 import React, { useState } from "react"
-import TextField from "@material-ui/core/TextField"
+import TextField from "@mui/material/TextField"
 import QuestionContainer from "../QuestionContainer"
 import styled from "styled-components"
 import QuestionText from "../QuestionText"

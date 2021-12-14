@@ -1,6 +1,6 @@
 {
   "name": "material-survey",
-  "version": "1.0.40",
+  "version": "1.1.0",
   "description": "Material UI Survey Framework",
   "repository": {
     "type": "git",
@@ -27,8 +27,6 @@
     "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/preset-flow": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
-    "@material-ui/core": "^4.6.0",
-    "@material-ui/icons": "^4.5.1",
     "@storybook/addon-actions": "^5.1.11",
     "@storybook/addon-info": "^5.1.11",
     "@storybook/addon-links": "^5.1.11",
@@ -43,18 +41,23 @@
     "lodash": "^4.17.11",
     "prettier": "^1.15.3",
     "raw-loader": "^1.0.0",
-    "react-dom": "^16.9.0",
-    "react": "^16.9.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-markdown": "^4.0.4",
     "rimraf": "^2.6.3",
-    "styled-components": "^4.1.2",
     "storybook-addon-prettier-source": "^2.1.2",
+    "styled-components": "^4.1.2",
     "zipcodes": "^8.0.0"
   },
   "peerDependencies": {
     "styled-components": "^4.1.2"
   },
   "dependencies": {
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
+    "@mui/icons-material": "^5.2.1",
+    "@mui/material": "^5.2.3",
+    "@mui/styles": "^5.2.3",
     "k-choice-sort": "^1.0.9",
     "lodash": "^4.17.11",
     "react-dropzone": "^8.0.1",

@@ -1,12 +1,12 @@
 // @flow
 
 import React, { Fragment, useContext } from "react"
-import Card from "@material-ui/core/Card"
-import CardHeader from "@material-ui/core/CardHeader"
-import CardContent from "@material-ui/core/CardContent"
+import Card from "@mui/material/Card"
+import CardHeader from "@mui/material/CardHeader"
+import CardContent from "@mui/material/CardContent"
 import type { BaseQuestion } from "../../material-survey-format.js.flow"
-import CheckIcon from "@material-ui/icons/CheckCircle"
-import { green, grey, red } from "@material-ui/core/colors"
+import CheckIcon from "@mui/icons-material/CheckCircle"
+import { green, grey, red } from "@mui/material/colors"
 import styled from "styled-components"
 import QuestionText from "../QuestionText"
 import QuestionContext from "../QuestionContext"
