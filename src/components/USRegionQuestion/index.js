@@ -3,7 +3,7 @@
 import React, { createContext, useState } from "react"
 import QuestionContainer from "../QuestionContainer"
 import styled from "styled-components"
-import { blue } from "@material-ui/core/colors"
+import { blue } from "@mui/material/colors"
 import regions from "./regions"
 import flatten from "lodash/flatten"
 import classnames from "classnames"

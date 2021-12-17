@@ -2,14 +2,14 @@
 
 import type { BooleanQuestion } from "../../material-survey-format.js.flow"
 import React, { useState } from "react"
-import Radio from "@material-ui/core/Radio"
-import Button from "@material-ui/core/Button"
+import Radio from "@mui/material/Radio"
+import Button from "@mui/material/Button"
 import QuestionContainer from "../QuestionContainer"
 import styled from "styled-components"
 import QuestionText from "../QuestionText"
-import TextField from "@material-ui/core/TextField"
-import Typography from "@material-ui/core/Typography"
-import { grey } from "@material-ui/core/colors"
+import TextField from "@mui/material/TextField"
+import Typography from "@mui/material/Typography"
+import { grey } from "@mui/material/colors"
 import useQuestionAnswer from "../../hooks/use-question-answer"
 
 const Row = styled.div`

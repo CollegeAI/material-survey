@@ -5,7 +5,7 @@ import React from "react"
 import QuestionContainer from "../QuestionContainer"
 import styled from "styled-components"
 import QuestionText from "../QuestionText"
-import Slider from "@material-ui/core/Slider"
+import Slider from "@mui/material/Slider"
 import useQuestionAnswer from "../../hooks/use-question-answer"
 
 const Row = styled.div`
