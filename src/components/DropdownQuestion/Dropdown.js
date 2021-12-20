@@ -10,6 +10,7 @@ import Select from "@mui/material/Select"
 import ReactSelect from "react-select"
 import MenuItem from "@mui/material/MenuItem"
 import styled from "styled-components"
+import useTheme from "@material-ui/core/styles/useTheme"
 
 const SelectedValueContainer = styled.div`
   padding: 4px;
@@ -27,6 +28,8 @@ export default ({
   multiple?: boolean,
   changeAnswer: Function
 }) => {
+  const MUItheme = useTheme()
+
   const choiceList = choices.map(choice =>
     typeof choice === "string" ? { value: choice, text: choice } : choice
   )
@@ -57,8 +60,37 @@ export default ({
           container: provided => ({
             ...provided,
             fontFamily: "Roboto, sans-serif"
+          }),
+          singleValue: provided => ({
+            ...provided,
+            color: MUItheme.palette.text.primary
+          }),
+          option: (provided, { data, isDisabled, isFocused, isSelected }) => ({
+            ...provided,
+            color: (isFocused || isSelected) ? MUItheme.palette.primary.contrastText : MUItheme.palette.text.primary
           })
         }}
+        theme={theme => ({
+          ...theme,
+          colors: {
+            ...theme.colors,
+            primary: MUItheme.palette.primary.main,
+            primary75: MUItheme.palette.primary.light,
+            primary50: MUItheme.palette.primary.light,
+            primary25: MUItheme.palette.primary.light,
+            neutral0: MUItheme.palette.background.paper,
+            neutral5: MUItheme.palette.grey['50'],
+            neutral10: MUItheme.palette.grey['100'],
+            neutral20: MUItheme.palette.grey['200'],
+            neutral30: MUItheme.palette.grey['300'],
+            neutral40: MUItheme.palette.grey['400'],
+            neutral50: MUItheme.palette.grey['500'],
+            neutral60: MUItheme.palette.grey['600'],
+            neutral70: MUItheme.palette.grey['700'],
+            neutral80: MUItheme.palette.grey['800'],
+            neutral90: MUItheme.palette.grey['900']
+          }
+        })}
         isMulti={multiple}
         menuPortalTarget={document.body}
         options={choiceList.map(c => ({ value: c.value, label: c.text }))}
